@@ -1,3 +1,4 @@
+package sprites;
 
 public class StarShip {
 
