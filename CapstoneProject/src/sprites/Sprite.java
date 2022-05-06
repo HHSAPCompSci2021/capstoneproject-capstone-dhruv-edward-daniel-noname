@@ -1,5 +1,5 @@
 package sprites;
-import processing.core.PImage;
+//import processing.core.PImage;
 
 public class Sprite 
 {

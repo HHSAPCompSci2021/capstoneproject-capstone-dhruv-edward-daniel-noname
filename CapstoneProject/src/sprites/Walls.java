@@ -1,6 +1,6 @@
 package sprites;
 
-import javax.swing.Spring;
+//import javax.swing.Spring;
 
 public class Walls{
     
