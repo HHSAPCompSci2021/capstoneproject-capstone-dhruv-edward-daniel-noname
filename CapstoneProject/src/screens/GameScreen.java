@@ -5,8 +5,7 @@ package screens;
 import java.awt.Point;
 import java.awt.Rectangle;
 import processing.core.PImage;
-
-
+import sprites.Map;
 import core.DrawingSurface;
 
 
@@ -35,7 +34,8 @@ public class GameScreen extends Screen {
 
 		//surface.background(background);
 		surface.rect(0, 0, 800, 500);
-		
+		Map lv1 = new Map(5,10,"images/map.txt");
+		lv1.draw(surface, 10, 10, 100, 300);
 	}
 
 
