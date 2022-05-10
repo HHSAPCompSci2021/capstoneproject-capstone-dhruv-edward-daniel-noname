@@ -18,10 +18,11 @@ public class MenuScreen extends Screen {
 	private int y;
 
 	public MenuScreen(DrawingSurface surface) {
-		super(800,600);
+		super(400,800);
 		this.surface = surface;
 
-		button = new Rectangle(800/2-100,600/2-50,200,100);
+		button = new Rectangle(surface.width,surface.height,200,100);
+		System.out.println(surface.height);
 	}
 
 	public void setup()
@@ -44,13 +45,14 @@ public class MenuScreen extends Screen {
 	
 
 		//fun
+		/*
 		surface.stroke(226, 204, 0);
 		surface.line(0, y, surface.width, y);
 	  
 		y++;
 		if (y > surface.height) {
 		  y = 0;
-		}
+		}*/
 
 	}
 
