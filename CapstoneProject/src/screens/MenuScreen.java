@@ -34,7 +34,7 @@ public class MenuScreen extends Screen {
 	{
 
 		//surface.background(background);
-		surface.image(background, 0, 0, 398, 684);
+		surface.image(background, 0, 0, 400, 800);
 
 		surface.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
 		surface.fill(0);
