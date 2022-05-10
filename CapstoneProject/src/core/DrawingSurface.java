@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 import screens.ScreenSwitcher;
+import screens.GameScreen;
 import screens.MenuScreen;
 import screens.Screen;
 
@@ -21,7 +22,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
     {
         screens = new ArrayList<Screen>();
         screens.add(new MenuScreen(this));
-
+        screens.add(new GameScreen(this));
         active = screens.get(0);
 
     }
