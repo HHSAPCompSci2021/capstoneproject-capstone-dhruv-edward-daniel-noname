@@ -1,67 +1,140 @@
 package screens;
 
-
-
+import core.DrawingSurface;
 import java.awt.Point;
 import java.awt.Rectangle;
-import processing.core.PImage;
 
 
-import core.DrawingSurface;
+import java.util.ArrayList;
+
+import org.w3c.dom.css.Rect;
+
+import processing.core.PApplet;
+import processing.core.PShapeSVG.Gradient;
+
+public class MenuScreen extends Screen{
+
+    private DrawingSurface surface;
+
+    private final int COLUMSIZE = 5, MARGIN = 25;
+    private final int DIM = 60, GAP = 15, LEN = DIM+GAP;
+    
+    private Level[][] Menu = new Level[COLUMSIZE][COLUMSIZE];
 
 
-public class MenuScreen extends Screen {
+    private int levels = 1;
 
-	private DrawingSurface surface;
-	private PImage background;
-	private Rectangle button;
-	private int y;
+    public MenuScreen(DrawingSurface surface) 
+    {
+        super(800, 600);
 
-	public MenuScreen(DrawingSurface surface) {
-		super(800,600);
-		this.surface = surface;
-
-		button = new Rectangle(800/2-100,600/2-50,200,100);
-	}
-
-	public void setup()
-	{	
-		System.out.println("IN");
-		background = surface.loadImage("/images/menubg.jpg");
-	}
-
-	public void draw() 
-	{
-
-		//surface.background(background);
-		surface.image(background, 0, 0, 398, 684);
-
-		surface.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
-		surface.fill(0);
-		String str = "Click me!";
-		float w = surface.textWidth(str);
-		surface.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
-	
-
-		//fun
-		surface.stroke(226, 204, 0);
-		surface.line(0, y, surface.width, y);
-	  
-		y++;
-		if (y > surface.height) {
-		  y = 0;
-		}
-
-	}
+        this.surface = surface;
+        //TODO Auto-generated constructor stub
+    }
+    
+    public void setup()
+    {
+        System.out.println("@DEGUB");
 
 
+        for(int r = 0; r!=COLUMSIZE; ++r)
+        {
+            for(int c = 0; c!=COLUMSIZE; ++c)
+            {
+                Menu[r][c] = new Level(c*LEN + MARGIN*2, r*LEN+MARGIN, DIM, DIM, "HOLA");
+                System.out.println("f");
+            }
+        }
+    }   
 
-	public void mousePressed() {
-		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
-		if (button.contains(p))
-			surface.switchScreen(ScreenSwitcher.GAME_SCREEN);
-	}
-	
+    public void draw()
+    {
+        surface.background(100);
 
+
+        for(int r = 0; r!=COLUMSIZE; ++r)
+            for(int c = 0; c!=COLUMSIZE; ++c)
+            {
+                Menu[r][c].display(surface);
+            }
+
+    }
 }
 
+
+class Level
+{
+    int x, y, w,h, textSize = 12;
+    String text = "";
+    int TEXTOFFSET = 10;
+    boolean state, clickable = true, hasText = false;
+
+    Level(int xx, int yy, int ww, int hh, boolean clickablee)
+    {
+        x = xx;
+        y = yy;
+        w = ww;
+        h = hh;
+        clickable = clickablee;
+    }
+
+    Level(int xx, int yy, int ww, int hh)
+    {
+        x = xx;
+        y = yy;
+        w = ww;
+        h = hh;
+
+    }
+
+    Level(int xx, int yy, int ww, int hh, String s)
+    {
+        x = xx;
+        y = yy;
+        w = ww;
+        h = hh;
+
+        clickable = true;
+        addText(s);
+    }
+
+
+    void addText(String s, int size)
+    {
+        hasText = true;
+        text = s;
+        textSize = size;
+    }
+
+    void addText(String s)
+    {
+        hasText = true;
+        text = s;
+    }
+
+    boolean toggle()
+    {
+        return state = !state;
+    }
+
+    boolean clicked(Point p)
+    {
+        if(clickable)
+        {
+            return (new Rectangle(x,y,w,h).contains(p));
+        }
+
+        return clickable;
+    }
+
+    void display(DrawingSurface surface)
+    {
+        surface.rect(x,y,w,h);
+        if(hasText)
+        {
+            surface.textSize(textSize);
+            surface.fill(200);
+            surface.text(text, x+TEXTOFFSET, y+TEXTOFFSET);    
+        }
+    }
+}

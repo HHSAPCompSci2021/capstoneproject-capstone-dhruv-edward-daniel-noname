@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 import screens.ScreenSwitcher;
+import screens.StartScreen;
 import screens.MenuScreen;
+
 import screens.Screen;
 
 
@@ -20,7 +22,10 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
     public DrawingSurface()
     {
         screens = new ArrayList<Screen>();
+        
+        screens.add(new StartScreen(this));
         screens.add(new MenuScreen(this));
+
 
         active = screens.get(0);
 
@@ -34,6 +39,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
 
     public void draw()
     {
+        
         ratioX = (float)width/active.DRAWING_WIDTH;
 		ratioY = (float)height/active.DRAWING_HEIGHT;
 
@@ -84,6 +90,8 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
     @Override
     public void switchScreen(int i) {
         active = screens.get(i);
+        System.out.println(i);
+
         
     }
 }
