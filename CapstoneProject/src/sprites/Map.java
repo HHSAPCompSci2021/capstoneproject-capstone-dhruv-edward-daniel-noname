@@ -10,12 +10,15 @@ import processing.core.PApplet;
 
 public class Map {
 	private char[][] grid;
+	private int x,y;
 	
 	public Map() {
 		grid = new char[10][3];
 	}
 	
-	public Map(int lanes, int length, String filename) {
+	public Map(int lanes, int length, String filename, int x, int y) {
+		this.x = x;
+		this.y = y;
 		grid = new char[length][lanes];
 		readData(filename,grid);
 	}
@@ -24,10 +27,18 @@ public class Map {
 		return grid;
 	}
 	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
 	public void draw(PApplet marker, float x, float y, float width, float height) {
 		marker.fill(255);
-		float rectWidth = width/(grid[0].length-1);
-		float rectHeight = height/(grid.length-1);
+		float rectWidth = width/(grid[0].length);
+		float rectHeight = height/(grid.length);
 		
 		for(int i = 0; i<grid.length; i++) {
 			for(int j = 0; j<grid[i].length;j++) {

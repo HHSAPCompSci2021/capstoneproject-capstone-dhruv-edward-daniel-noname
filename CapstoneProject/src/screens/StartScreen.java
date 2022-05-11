@@ -23,7 +23,7 @@ public class StartScreen extends Screen {
 		super(800,600);
 		this.surface = surface;
 
-		button = new Rectangle(800/2-100,600/2-50,200,100);
+		button = new Rectangle(400/2-100,800/2-50,200,100);
 	}
 
 	public void setup()
@@ -35,7 +35,7 @@ public class StartScreen extends Screen {
 	{
 
 		//surface.background(background);
-		surface.image(background, 0, 0, 398, 684);
+		surface.image(background, 0, 0);
 
 		surface.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
 		surface.fill(0);
@@ -43,11 +43,6 @@ public class StartScreen extends Screen {
 		float w = surface.textWidth(str);
 		surface.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
 	
-
-		//fun
-		surface.stroke(226, 204, 0);
-		surface.line(0, y, surface.width, y);
-	  
 		y++;
 		if (y > surface.height) {
 		  y = 0;
@@ -64,7 +59,4 @@ public class StartScreen extends Screen {
 			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
 		}
 	}
-	
-
 }
-
