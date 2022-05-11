@@ -1,29 +1,33 @@
 package screens;
 
+
+
 import java.awt.Point;
 import java.awt.Rectangle;
 import processing.core.PImage;
-import sprites.Map;
+
+
 import core.DrawingSurface;
 
 
-public class GameScreen extends Screen {
+public class StartScreen extends Screen {
 
 	private DrawingSurface surface;
 	private PImage background;
+
 	private Rectangle button;
 	private int y;
 
-	public GameScreen(DrawingSurface surface) {
-		super(400,800);
+	public StartScreen(DrawingSurface surface) 
+	{
+		super(800,600);
 		this.surface = surface;
 
-		button = new Rectangle(surface.width/2,surface.height/2,200,100);
+		button = new Rectangle(800/2-100,600/2-50,200,100);
 	}
 
 	public void setup()
 	{	
-		System.out.println("IN");
 		background = surface.loadImage("/images/menubg.jpg");
 	}
 
@@ -31,9 +35,24 @@ public class GameScreen extends Screen {
 	{
 
 		//surface.background(background);
-		surface.rect(0, 0, 400, 800);
-		Map lv1 = new Map(5,10,"images/map.txt");
-		lv1.draw(surface, 0, 0, surface.width, surface.height);
+		surface.image(background, 0, 0, 398, 684);
+
+		surface.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
+		surface.fill(0);
+		String str = "Click me!";
+		float w = surface.textWidth(str);
+		surface.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
+	
+
+		//fun
+		surface.stroke(226, 204, 0);
+		surface.line(0, y, surface.width, y);
+	  
+		y++;
+		if (y > surface.height) {
+		  y = 0;
+		}
+
 	}
 
 
@@ -41,8 +60,11 @@ public class GameScreen extends Screen {
 	public void mousePressed() {
 		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
 		if (button.contains(p))
+		{
 			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
+		}
 	}
 	
 
 }
+
