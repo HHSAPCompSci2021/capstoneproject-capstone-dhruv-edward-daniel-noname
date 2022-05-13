@@ -8,6 +8,7 @@ public class StarShip {
 	
 	private Rectangle hitbox;
 	private int x,y; 
+	public int ShipHealth;
 	
 	public StarShip() {
 		//75 * 75
@@ -20,12 +21,16 @@ public class StarShip {
 		{
 			if(hitbox.intersects(wallBlocks.get(i))) 
 			{
+				
 				return true;
 			}
 		}
 		return false;
 	}
 	
+	public int getShipHealth() {
+		return ShipHealth;
+	}
 	
 	
 	public void draw(PApplet surface) {
