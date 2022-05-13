@@ -34,7 +34,6 @@ public class Map {
 	}
 	
 	public ArrayList<Rectangle> getRects() {
-		System.out.println(mapRects);
 		return mapRects;
 	}
 	
@@ -48,7 +47,6 @@ public class Map {
 				float rectX = rectWidth*j;
 				float rectY = startY+rectWidth*(i-grid.length);
 				Rectangle r = new Rectangle(rectX, rectY, rectWidth, rectWidth);
-				System.out.println(r.toString());
 				mapRects.add(r);
 				if(grid[i][j]=='O') { 
 					r.setFillColor(0, 0, 0, 255);
