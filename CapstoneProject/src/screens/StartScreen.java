@@ -19,7 +19,7 @@ public class StartScreen extends Screen {
 	public StartScreen(DrawingSurface surface) {
 		super(400,800);
 		this.surface = surface;
-		button = new Rectangle(surface.width/2,surface.height/2,200,100);
+		button = new Rectangle(surface.width/2+50,surface.height/2+50,200,100);
 		button.setFillColor(250, 250, 255, 255);
 	}
 
@@ -39,19 +39,6 @@ public class StartScreen extends Screen {
 		surface.fill(0);
 		String str = "Click me!";
 		float w = surface.textWidth(str);
-		//surface.text(str, surface.width+button.width/2-w/2, button.y+button.height/2);
-	
-
-		//fun
-		/*
-		surface.stroke(226, 204, 0);
-		surface.line(0, y, surface.width, y);
-	  
-		y++;
-		if (y > surface.height) {
-		  y = 0;
-		}*/
-
 	}
 
 

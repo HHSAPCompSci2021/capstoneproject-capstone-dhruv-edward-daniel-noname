@@ -70,6 +70,10 @@ public class MenuScreen extends Screen{
                 Menu[r][c].display(surface);
             
             }
+        surface.rect(0, 170, 400, 600);
+        surface.fill(255);
+        surface.text("Controls\nMOVE LEFT: <- Key\nMOVE RIGHT: -> key", 130, 300);
+        surface.stroke(0);
 
     }
 
