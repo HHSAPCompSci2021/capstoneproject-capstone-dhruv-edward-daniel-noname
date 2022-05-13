@@ -17,7 +17,7 @@ public class StartScreen extends Screen {
 	private int y;
 	
 	public StartScreen(DrawingSurface surface) {
-		super(surface.width, surface.height);
+		super(400,800);
 		this.surface = surface;
 		button = new Rectangle(surface.width/2,surface.height/2,200,100);
 		button.setFillColor(250, 250, 255, 255);

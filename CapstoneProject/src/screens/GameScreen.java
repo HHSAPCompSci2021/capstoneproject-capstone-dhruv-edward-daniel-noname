@@ -3,6 +3,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import processing.core.PImage;
 import sprites.Map;
+import sprites.StarShip;
 import core.DrawingSurface;
 
 
@@ -10,6 +11,7 @@ public class GameScreen extends Screen {
 
 	private DrawingSurface surface;
 	private PImage background;
+	private StarShip ship;
 	private int y;
 
 	public GameScreen(DrawingSurface surface) {
@@ -32,6 +34,7 @@ public class GameScreen extends Screen {
 		surface.rect(154, 0, 77, 800);
 		Map lv1 = new Map(5,16,"images/map.txt",y);
 		lv1.draw(surface);
+		ship.draw(surface);
 		y+=5;
 	}
 
