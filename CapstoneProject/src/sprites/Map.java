@@ -17,7 +17,7 @@ public class Map {
 	}
 	
 	public Map(int lanes, int length, String filename, int x, int y) {
-		this.x = x;
+		this.x = 0;
 		this.y = y;
 		grid = new char[length][lanes];
 		readData(filename,grid);
@@ -35,10 +35,11 @@ public class Map {
 		return y;
 	}
 	
-	public void draw(PApplet marker, float x, float y, float width, float height) {
+	public void draw(PApplet marker) {
+		this.y-=10;
 		marker.fill(255);
-		float rectWidth = width/(grid[0].length);
-		float rectHeight = height/(grid.length);
+		float rectWidth = marker.width/(grid[0].length);
+		float rectHeight = marker.height/(grid.length);
 		
 		for(int i = 0; i<grid.length; i++) {
 			for(int j = 0; j<grid[i].length;j++) {
