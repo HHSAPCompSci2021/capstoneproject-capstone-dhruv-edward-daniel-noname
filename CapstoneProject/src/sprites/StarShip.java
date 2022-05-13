@@ -11,7 +11,7 @@ public class StarShip {
 	
 	public StarShip() {
 		//75 * 75
-		hitbox = new Rectangle(0, 0, 75, 75);
+		hitbox = new Rectangle(167, 700, 50, 50);
 	}
 	
 	public boolean hitsWall(ArrayList<Rectangle> wallBlocks) 
@@ -29,6 +29,7 @@ public class StarShip {
 	
 	
 	public void draw(PApplet surface) {
-		
+		hitbox.setFillColor(200, 200, 250, 250);
+		hitbox.draw(surface);
 	}
 }

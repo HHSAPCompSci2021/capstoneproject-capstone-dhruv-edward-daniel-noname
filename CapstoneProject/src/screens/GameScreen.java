@@ -12,12 +12,14 @@ public class GameScreen extends Screen {
 	private DrawingSurface surface;
 	private PImage background;
 	private StarShip ship;
-	private int y;
+	private int y, scrollSpeed;
 
-	public GameScreen(DrawingSurface surface) {
+	public GameScreen(DrawingSurface surface, int speed) {
 		super(surface.width, surface.height);
 		y=0;
 		this.surface = surface;
+		ship = new StarShip();
+		scrollSpeed = speed;
 	}
 
 	public void setup()
@@ -29,13 +31,14 @@ public class GameScreen extends Screen {
 	{
 		//background.resize(this.DRAWING_WIDTH, this.DRAWING_HEIGHT);
 		//surface.background(background);
+		surface.fill(0);
 		surface.rect(0, 0, 400, 800);
 		surface.fill(0);
 		surface.rect(154, 0, 77, 800);
 		Map lv1 = new Map(5,16,"images/map.txt",y);
 		lv1.draw(surface);
 		ship.draw(surface);
-		y+=5;
+		y+=scrollSpeed;
 	}
 
 
