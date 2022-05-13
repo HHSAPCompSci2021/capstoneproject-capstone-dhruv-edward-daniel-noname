@@ -29,6 +29,18 @@ public class StarShip {
 		return ShipHealth;
 	}
 	
+	public void setShipeHealth(int x) {
+		ShipHealth = x;
+	}
+	
+	public boolean isDead() {
+		if(ShipHealth == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	
 	public void draw(PApplet surface) {
 		hitbox.setFillColor(200, 200, 250, 250);
