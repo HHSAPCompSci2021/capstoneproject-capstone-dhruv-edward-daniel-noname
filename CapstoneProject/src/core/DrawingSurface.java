@@ -13,20 +13,16 @@ import screens.Screen;
 
 
 public class DrawingSurface extends PApplet implements ScreenSwitcher
-{
-
-    public float ratioX,ratioY;
-    
+{    
     private Screen active;
     private ArrayList<Screen> screens;
 
     public DrawingSurface()
     {
         screens = new ArrayList<Screen>();
-        
         screens.add(new StartScreen(this));
         screens.add(new MenuScreen(this));
-        screens.add(new GameScreen(this));
+        screens.add(new GameScreen(this, 5));
         active = screens.get(0);
 
     }
