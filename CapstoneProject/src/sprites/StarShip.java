@@ -17,11 +17,8 @@ public class StarShip {
 	
 	public boolean hitsWall(ArrayList<Rectangle> wallBlocks) 
 	{
-		for(int i=0; i<wallBlocks.size(); i++) 
-		{
-			if(hitbox.intersects(wallBlocks.get(i))) 
-			{
-				
+		for(Rectangle r : wallBlocks) {
+			if(hitbox.intersects(r)) {
 				return true;
 			}
 		}

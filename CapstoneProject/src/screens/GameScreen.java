@@ -36,8 +36,12 @@ public class GameScreen extends Screen {
 		surface.fill(0);
 		surface.rect(154, 0, 77, 800);
 		Map lv1 = new Map(5,16,"images/map.txt",y);
+		if(ship.hitsWall(lv1.getRects())) {
+			scrollSpeed=0;
+		}
 		lv1.draw(surface);
 		ship.draw(surface);
+	
 		y+=scrollSpeed;
 	}
 

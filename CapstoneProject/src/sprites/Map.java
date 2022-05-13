@@ -13,7 +13,7 @@ import processing.core.PApplet;
 public class Map {
 	private char[][] grid;
 	private int y;
-	ArrayList<Rectangle> mapRects;
+	ArrayList<Rectangle> mapRects = new ArrayList<Rectangle>();
 	
 	public Map() {
 		grid = new char[10][3];
@@ -34,6 +34,7 @@ public class Map {
 	}
 	
 	public ArrayList<Rectangle> getRects() {
+		System.out.println(mapRects);
 		return mapRects;
 	}
 	
@@ -46,13 +47,16 @@ public class Map {
 			for(int j = 0; j<grid[i].length;j++) {
 				float rectX = rectWidth*j;
 				float rectY = startY+rectWidth*(i-grid.length);
+				Rectangle r = new Rectangle(rectX, rectY, rectWidth, rectWidth);
+				System.out.println(r.toString());
+				mapRects.add(r);
 				if(grid[i][j]=='O') { 
-					marker.fill(0);
+					r.setFillColor(0, 0, 0, 255);
 				}
 				if(grid[i][j]=='X') {
-					marker.fill(90,20,20);
+					r.setFillColor(90,20,20,255);
 				}
-				marker.rect(rectX, rectY, rectWidth, rectWidth);
+				r.draw(marker);
 				}	
 			}
 	}
