@@ -37,21 +37,20 @@ public class Map {
 	
 	public void draw(PApplet marker) {
 		marker.fill(255);
+		marker.noStroke();
 		float rectWidth = marker.width/(grid[0].length);
-		float rectHeight = marker.height/(grid.length);
-		
+		int startY= (int)(marker.height-rectWidth*grid.length);
 		for(int i = 0; i<grid.length; i++) {
 			for(int j = 0; j<grid[i].length;j++) {
 				float rectX = x + rectWidth*j;
-				float rectY = y+rectHeight*i;
+				float rectY = startY+rectWidth*i;
 				if(grid[i][j]=='O') { 
-					marker.fill(100,180,220);
+					marker.fill(0);
 				}
 				if(grid[i][j]=='X') {
-					marker.fill(255);
+					marker.fill(90,20,20);
 				}
-				marker.rect(rectX, rectY, rectWidth, rectHeight);
-				marker.stroke(0);
+				marker.rect(rectX, rectY, rectWidth, rectWidth);
 				}	
 			}
 	}

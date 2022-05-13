@@ -10,11 +10,11 @@ public class GameScreen extends Screen {
 
 	private DrawingSurface surface;
 	private PImage background;
-	private Rectangle button;
 	private int y;
 
 	public GameScreen(DrawingSurface surface) {
 		super(400,800);
+		y=0;
 		this.surface = surface;
 	}
 
@@ -36,8 +36,6 @@ public class GameScreen extends Screen {
 
 
 	public void mousePressed() {
-		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
-		if (button.contains(p))
 			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
 	}
 	
