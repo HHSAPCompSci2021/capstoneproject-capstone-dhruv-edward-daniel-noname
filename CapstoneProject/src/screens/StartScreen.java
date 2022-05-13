@@ -1,13 +1,12 @@
 package screens;
 
 
-
 import java.awt.Point;
-import java.awt.Rectangle;
 import processing.core.PImage;
 
 
 import core.DrawingSurface;
+import dsharma578.shapes.*;
 
 
 public class StartScreen extends Screen {
@@ -16,13 +15,12 @@ public class StartScreen extends Screen {
 	private PImage background;
 	private Rectangle button;
 	private int y;
-
+	
 	public StartScreen(DrawingSurface surface) {
 		super(400,800);
 		this.surface = surface;
-
-		button = new Rectangle(surface.width,surface.height,200,100);
-		System.out.println(surface.height);
+		button = new Rectangle(surface.width/2,surface.height/2,200,100);
+		button.setFillColor(250, 250, 255, 255);
 	}
 
 	public void setup()
@@ -36,12 +34,12 @@ public class StartScreen extends Screen {
 
 		//surface.background(background);
 		surface.image(background, 0, 0, 400, 800);
-
-		surface.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
+	
+		button.draw(surface);
 		surface.fill(0);
 		String str = "Click me!";
 		float w = surface.textWidth(str);
-		surface.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
+		//surface.text(str, surface.width+button.width/2-w/2, button.y+button.height/2);
 	
 
 		//fun
@@ -60,8 +58,7 @@ public class StartScreen extends Screen {
 
 	public void mousePressed() 
 	{
-		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
-		if (button.contains(p))
+		if (button.isPointInside(surface.mouseX,surface.mouseY))
 			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
 	}
 	

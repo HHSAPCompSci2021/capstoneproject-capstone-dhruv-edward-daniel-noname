@@ -30,7 +30,6 @@ public class GameScreen extends Screen {
 	{
 
 		//surface.background(background);
-		System.out.println("wellcome");
 		surface.rect(0, 0, 400, 800);
 		Map lv1 = new Map(5,16,"images/map.txt", 10, y);
 		lv1.draw(surface);

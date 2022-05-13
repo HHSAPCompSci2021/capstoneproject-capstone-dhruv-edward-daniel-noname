@@ -39,16 +39,8 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
 
     public void draw()
     {
-        
-        ratioX = (float)width/active.DRAWING_WIDTH;
-		ratioY = (float)height/active.DRAWING_HEIGHT;
-
-        push();
-
-        scale(ratioX,ratioY);
 
         active.draw();
-        pop();
 
     }
 
