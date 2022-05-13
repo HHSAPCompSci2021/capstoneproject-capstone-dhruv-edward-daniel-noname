@@ -39,16 +39,8 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
 
     public void draw()
     {
-        
-        ratioX = (float)width/active.DRAWING_WIDTH;
-		ratioY = (float)height/active.DRAWING_HEIGHT;
-
-        push();
-
-        scale(ratioX,ratioY);
 
         active.draw();
-        pop();
 
     }
 
@@ -71,19 +63,6 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
 	
 	public void mouseReleased() {
 		active.mouseReleased();
-	}
-	
-
-    //Point Math
-
-    public Point assumedCoordinatesToActual(Point assumed) 
-    {
-		return new Point((int)(assumed.getX()*ratioX), (int)(assumed.getY()*ratioY));
-	}
-
-	public Point actualCoordinatesToAssumed(Point actual) 
-    {
-		return new Point((int)(actual.getX()/ratioX) , (int)(actual.getY()/ratioY));
 	}
 
     
