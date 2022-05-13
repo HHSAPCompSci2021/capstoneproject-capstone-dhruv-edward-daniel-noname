@@ -21,7 +21,7 @@ public class StarShip {
 		{
 			if(hitbox.intersects(wallBlocks.get(i))) 
 			{
-				
+				ShipHealth-=1;
 				return true;
 			}
 		}
@@ -30,6 +30,10 @@ public class StarShip {
 	
 	public int getShipHealth() {
 		return ShipHealth;
+	}
+	
+	public void setShipHealth(int x) {
+		ShipHealth = x;
 	}
 	
 	
