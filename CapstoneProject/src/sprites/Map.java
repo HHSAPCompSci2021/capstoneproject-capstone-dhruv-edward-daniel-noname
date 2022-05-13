@@ -36,7 +36,6 @@ public class Map {
 	}
 	
 	public void draw(PApplet marker) {
-		this.y-=10;
 		marker.fill(255);
 		float rectWidth = marker.width/(grid[0].length);
 		float rectHeight = marker.height/(grid.length);
@@ -45,10 +44,10 @@ public class Map {
 			for(int j = 0; j<grid[i].length;j++) {
 				float rectX = x + rectWidth*j;
 				float rectY = y+rectHeight*i;
-				if(grid[i][j]=='O') { //filled space(paintcan)
+				if(grid[i][j]=='O') { 
 					marker.fill(100,180,220);
 				}
-				if(grid[i][j]=='X') { //empty space(paintcan)
+				if(grid[i][j]=='X') {
 					marker.fill(255);
 				}
 				marker.rect(rectX, rectY, rectWidth, rectHeight);

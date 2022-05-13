@@ -16,13 +16,10 @@ public class GameScreen extends Screen {
 	public GameScreen(DrawingSurface surface) {
 		super(400,800);
 		this.surface = surface;
-
-		button = new Rectangle(surface.width/2,surface.height/2,200,100);
 	}
 
 	public void setup()
 	{	
-		System.out.println("IN");
 		background = surface.loadImage("/images/menubg.jpg");
 	}
 
@@ -31,7 +28,7 @@ public class GameScreen extends Screen {
 
 		//surface.background(background);
 		surface.rect(0, 0, 400, 800);
-		Map lv1 = new Map(5,16,"images/map.txt", 10, y);
+		Map lv1 = new Map(5,16,"images/map.txt",0,y);
 		lv1.draw(surface);
 		y+=5;
 	}

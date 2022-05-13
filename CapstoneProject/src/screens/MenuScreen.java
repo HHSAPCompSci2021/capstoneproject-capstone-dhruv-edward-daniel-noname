@@ -82,10 +82,8 @@ public class MenuScreen extends Screen{
                 if(Menu[r][c].clickable)
                 {
 					int levelID = Menu[r][c].clicked(p);
-                	System.out.println("level: "+levelID);
 					if( levelID != -1)
                     {
-                    	System.out.println("level: "+levelID);
 						Vague.ScreenSwitchFromInt(surface, levelID+2);
                     }
                 }
