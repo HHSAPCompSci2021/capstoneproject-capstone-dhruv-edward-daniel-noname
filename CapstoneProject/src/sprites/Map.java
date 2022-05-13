@@ -10,14 +10,13 @@ import processing.core.PApplet;
 
 public class Map {
 	private char[][] grid;
-	private int x,y;
+	private int y;
 	
 	public Map() {
 		grid = new char[10][3];
 	}
 	
-	public Map(int lanes, int length, String filename, int x, int y) {
-		this.x = 0;
+	public Map(int lanes, int length, String filename,  int y) {
 		this.y = y;
 		grid = new char[length][lanes];
 		readData(filename,grid);
@@ -25,10 +24,6 @@ public class Map {
 	
 	public char[][] getGrid() {
 		return grid;
-	}
-	
-	public int getX() {
-		return x;
 	}
 	
 	public int getY() {
@@ -39,11 +34,11 @@ public class Map {
 		marker.fill(255);
 		marker.noStroke();
 		float rectWidth = marker.width/(grid[0].length);
-		int startY= (int)(marker.height-rectWidth*grid.length);
+		int startY= y;
 		for(int i = 0; i<grid.length; i++) {
 			for(int j = 0; j<grid[i].length;j++) {
-				float rectX = x + rectWidth*j;
-				float rectY = startY+rectWidth*i;
+				float rectX = rectWidth*j;
+				float rectY = startY+rectWidth*(i-grid.length);
 				if(grid[i][j]=='O') { 
 					marker.fill(0);
 				}

@@ -13,7 +13,7 @@ public class GameScreen extends Screen {
 	private int y;
 
 	public GameScreen(DrawingSurface surface) {
-		super(400,800);
+		super(surface.width, surface.height);
 		y=0;
 		this.surface = surface;
 	}
@@ -25,10 +25,10 @@ public class GameScreen extends Screen {
 
 	public void draw() 
 	{
-
-		//surface.background(background);
-		surface.rect(0, 0, 400, 800);
-		Map lv1 = new Map(5,16,"images/map.txt",0,y);
+		background.resize(this.DRAWING_WIDTH, this.DRAWING_HEIGHT);
+		surface.background(background);
+//		surface.rect(0, 0, 400, 800);
+		Map lv1 = new Map(5,16,"images/map.txt",y);
 		lv1.draw(surface);
 		y+=5;
 	}
