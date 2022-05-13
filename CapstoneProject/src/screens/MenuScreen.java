@@ -23,7 +23,7 @@ public class MenuScreen extends Screen{
 	private Level[][] Menu = new Level[ROWSIZE][COLUMSIZE];
 
 
-    private int levels = 1;
+    private int levels = 7;
 
     public MenuScreen(DrawingSurface surface) 
     {
@@ -74,7 +74,7 @@ public class MenuScreen extends Screen{
     }
 
     public void mousePressed() {
-		Point p = surface.actualCoordinatesToAssumed(new Point(surface.mouseX,surface.mouseY));
+		Point p = new Point(surface.mouseX,surface.mouseY);
         for(int r = 0; r!=ROWSIZE; ++r)
         {
             for(int c = 0; c!=COLUMSIZE; ++c)
@@ -82,9 +82,10 @@ public class MenuScreen extends Screen{
                 if(Menu[r][c].clickable)
                 {
 					int levelID = Menu[r][c].clicked(p);
-                    if( levelID != -1)
+                	System.out.println("level: "+levelID);
+					if( levelID != -1)
                     {
-
+                    	System.out.println("level: "+levelID);
 						Vague.ScreenSwitchFromInt(surface, levelID+2);
                     }
                 }
@@ -156,7 +157,8 @@ class Level
     {
         if(clickable)
         {
-            boolean bool = new Rectangle(x,y,w,h).contains(p);
+            boolean bool = new Rectangle(x,y,w,h).contains(p); //error
+
             if(bool)
             {
                 this.state = !this.state;
