@@ -4,13 +4,16 @@ import java.awt.Point;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
+import dsharma578.shapes.Rectangle;
 
 import processing.core.PApplet;
 
 public class Map {
 	private char[][] grid;
 	private int y;
+	ArrayList<Rectangle> mapRects;
 	
 	public Map() {
 		grid = new char[10][3];
@@ -28,6 +31,10 @@ public class Map {
 	
 	public int getY() {
 		return y;
+	}
+	
+	public ArrayList<Rectangle> getRects() {
+		return mapRects;
 	}
 	
 	public void draw(PApplet marker) {
