@@ -1,49 +1,50 @@
 package sprites;
+import java.util.List;
+import processing.core.PImage;
 
 import dsharma578.shapes.Rectangle;
-import processing.core.PApplet;
 import java.util.ArrayList;
 
-public class StarShip {
+
+public class StarShip extends Sprite {
+
+	public static final int SHIP_WIDTH = 50;
+	public static final int SHIP_HEIGHT = 50;
+
+	private double xVel;
 	
-	private Rectangle hitbox;
-	private int x,y; 
-	public int ShipHealth;
+	public StarShip() 
+	{
+		super( 167, 700, SHIP_WIDTH, SHIP_HEIGHT);
+		xVel = 0;
 	
-	public StarShip() {
-		//75 * 75
-		hitbox = new Rectangle(167, 700, 50, 50);
 	}
-	
+
 	public boolean hitsWall(ArrayList<Rectangle> wallBlocks) 
 	{
-		for(Rectangle r : wallBlocks) {
-			if(hitbox.intersects(r)) {
+
+		for(Rectangle r : wallBlocks) 
+		{
+			System.out.println("hit");
+
+			if(new Rectangle(super.getRX(), super.getRY(), super.getRW(), super.getRH()).intersects(r)) 
+			{
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	public int getShipHealth() {
-		return ShipHealth;
-	}
-	
-	public void setShipeHealth(int x) {
-		ShipHealth = x;
-	}
-	
-	public boolean isDead() {
-		if(ShipHealth == 0) {
-			return true;
-		} else {
-			return false;
+
+
+
+
+	public void walk(int dir) {
+		if(dir==-1) { //0=left
+			super.moveByAmount(-10, 0);
+		}
+		if(dir==1) { //1=right
+			super.moveByAmount(10, 0);
 		}
 	}
-	
-	
-	public void draw(PApplet surface) {
-		hitbox.setFillColor(200, 200, 250, 250);
-		hitbox.draw(surface);
-	}
+
 }

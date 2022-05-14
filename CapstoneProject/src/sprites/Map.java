@@ -13,7 +13,7 @@ import processing.core.PApplet;
 public class Map {
 	private char[][] grid;
 	private int y;
-	ArrayList<Rectangle> mapRects = new ArrayList<Rectangle>();
+	ArrayList<Rectangle> wallRectangles = new ArrayList<Rectangle>();
 	
 	public Map() {
 		grid = new char[10][3];
@@ -33,8 +33,9 @@ public class Map {
 		return y;
 	}
 	
-	public ArrayList<Rectangle> getRects() {
-		return mapRects;
+	public ArrayList<Rectangle> getWallRects() 
+	{
+		return wallRectangles;
 	}
 	
 	public void draw(PApplet marker) {
@@ -42,24 +43,28 @@ public class Map {
 		marker.noStroke();
 		float rectWidth = marker.width/(grid[0].length);
 		int startY= y;
-		for(int i = 0; i<grid.length; i++) {
-			for(int j = 0; j<grid[i].length;j++) {
+
+		for(int i = 0; i<grid.length; i++) 
+		{
+			for(int j = 0; j<grid[i].length;j++) 
+			{
+
 				float rectX = rectWidth*j;
 				float rectY = startY+rectWidth*(i-grid.length);
+
 				Rectangle r = new Rectangle(rectX, rectY, rectWidth, rectWidth);
-				mapRects.add(r);
-				if(grid[i][j]=='O') { 
-					r.setFillColor(0, 0, 0, 255);
-				}
-				if(grid[i][j]=='X') {
-					r.setFillColor(90,20,20,255);
-				}
+				wallRectangles.add(new Rectangle(rectX, rectY, rectWidth, rectWidth));
+
+				if(grid[i][j]=='O') {r.setFillColor(0, 0, 0, 255);}
+				if(grid[i][j]=='X') {r.setFillColor(90,20,20,255);}
+
 				r.draw(marker);
-				}	
-			}
+			}	
+		}
 	}
 	
-	public void readData (String filename, char[][] gameData) {
+	public void readData (String filename, char[][] gameData) 
+	{
 		File dataFile = new File(filename);
 
 		if (dataFile.exists()) {

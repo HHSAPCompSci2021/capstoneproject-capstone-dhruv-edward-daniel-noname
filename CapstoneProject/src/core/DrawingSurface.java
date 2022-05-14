@@ -4,8 +4,11 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
+import java.awt.event.KeyEvent;
+
+
 import screens.ScreenSwitcher;
-import screens.GameScreen;
+import screens.GameL1;
 import screens.StartScreen;
 import screens.MenuScreen;
 
@@ -16,19 +19,25 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
 {    
     private Screen active;
     private ArrayList<Screen> screens;
+    private ArrayList<Integer> keys;
+
 
     public DrawingSurface()
     {
+        keys = new ArrayList<Integer>();
         screens = new ArrayList<Screen>();
+        
         screens.add(new StartScreen(this));
         screens.add(new MenuScreen(this));
-        screens.add(new GameScreen(this, 5));
+        screens.add(new GameL1(this, 5));
+
         active = screens.get(0);
 
     }
 
     public void setup()
     {
+        frameRate(30);
         for (Screen s : screens)
             s.setup();
     }
@@ -60,6 +69,22 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
 	public void mouseReleased() {
 		active.mouseReleased();
 	}
+
+	public void keyPressed() {
+		keys.add(keyCode);
+		if (key == ESC)  // This prevents a processing program from closing on escape key
+			key = 0;
+	}
+
+	public void keyReleased() {
+		while(keys.contains(keyCode))
+			keys.remove(new Integer(keyCode));
+	}
+
+	public boolean isPressed(Integer code) {
+		return keys.contains(code);
+	}
+	
 
     
     @Override
