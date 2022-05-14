@@ -5,64 +5,97 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import processing.core.PImage;
 import java.util.Scanner;
 import dsharma578.shapes.Rectangle;
 
+import java.awt.geom.Rectangle2D;
 import processing.core.PApplet;
 
-public class Map {
+public class Map{
 	private char[][] grid;
-	private int y;
-	ArrayList<Rectangle> wallRectangles = new ArrayList<Rectangle>();
+    private int y;
+    private PImage wallChunk;
+    private List<List<Sprite>> wall = new ArrayList<List<Sprite>>();
 	
-	public Map() {
+	public Map() 
+    {
 		grid = new char[10][3];
 	}
-	
-	public Map(int lanes, int length, String filename,  int y) {
+
+    public void setup(PApplet marker)
+    {
+        wallChunk = marker.loadImage("CapstoneProject\\images\\wallchunk.png");
+        makeSprites(marker);
+    }
+
+    public void scroll(int scrollSpeed)
+    {
+        for(int i=0; i<grid.length; i++)
+        {
+            for(int j=0; j<grid[i].length; j++)
+            {
+                wall.get(i).get(j).moveByAmount(0, 5);
+            }
+        }
+    }
+
+	public Map(int lanes, int length, String filename,  int y) 
+    {
 		this.y = y;
 		grid = new char[length][lanes];
-		readData(filename,grid);
+		readData(filename, grid);
+
+        //makeSprites();
 	}
 	
-	public char[][] getGrid() {
-		return grid;
-	}
-	
-	public int getY() {
-		return y;
-	}
-	
-	public ArrayList<Rectangle> getWallRects() 
-	{
-		return wallRectangles;
-	}
-	
-	public void draw(PApplet marker) {
-		marker.fill(255);
-		marker.noStroke();
-		float rectWidth = marker.width/(grid[0].length);
-		int startY= y;
+    public void makeSprites(PApplet marker)
+    {
+        int width =  marker.width/(grid[0].length);
 
-		for(int i = 0; i<grid.length; i++) 
-		{
-			for(int j = 0; j<grid[i].length;j++) 
-			{
+        for(int i=0; i<grid.length; i++)
+        {
+            wall.add(new ArrayList<Sprite>());
+            for(int j=0; j<grid[i].length; j++)
+            {
+                int x = width*j;
+                int y = this.y+width*(i-grid.length);
 
-				float rectX = rectWidth*j;
-				float rectY = startY+rectWidth*(i-grid.length);
+                if(grid[i][j]=='O')
+                {
+                    wall.get(i).add(new Sprite(x, y, width, width));
+                    wall.get(i).get(j).setFillColor(0, 0, 0, 255);
+                }
+                if(grid[i][j]=='X')
+                {
+                    wall.get(i).add(new Sprite(wallChunk, x, y, width, width));
+                }
+            }
+        }
+    }
 
-				Rectangle r = new Rectangle(rectX, rectY, rectWidth, rectWidth);
-				wallRectangles.add(new Rectangle(rectX, rectY, rectWidth, rectWidth));
+    public List<List<Sprite>> getWallRects()
+    {
+        return wall;
+    }
 
-				if(grid[i][j]=='O') {r.setFillColor(0, 0, 0, 255);}
-				if(grid[i][j]=='X') {r.setFillColor(90,20,20,255);}
+    public void draw(PApplet marker)
+    {
+        marker.fill(255);
+        marker.noStroke();
 
-				r.draw(marker);
-			}	
-		}
-	}
-	
+        for(int i=0; i<grid.length; i++)
+        {
+            for(int j=0; j<grid[i].length; j++)
+            {
+                wall.get(i).get(j).draw(marker);
+            }
+        }
+
+    }
+
 	public void readData (String filename, char[][] gameData) 
 	{
 		File dataFile = new File(filename);

@@ -10,6 +10,7 @@ public class Sprite extends Rectangle2D.Double {
 	
 	// FIELDS
 	private PImage image;
+	private int r=100, g = 100, b=100, a = 255;
 	
 	// CONSTRUCTORS
 	
@@ -19,6 +20,11 @@ public class Sprite extends Rectangle2D.Double {
 	
 	public Sprite(PImage img, int x, int y, int w, int h) {
 		super(x,y,w,h);
+		image = img;
+	}
+
+	public void changeImage(PImage img)
+	{
 		image = img;
 	}
 	
@@ -45,11 +51,19 @@ public class Sprite extends Rectangle2D.Double {
 		y = Math.max(0,y);
 	}
 	
+	public  void setFillColor(int r, int g, int b, int a)
+	{
+		this.r = r;
+		this.g = g;
+		this.b = b;
+		this.a = a;
+	}
+
 	public void draw(PApplet g) {
 		if (image != null)
 			g.image(image,(float)x,(float)y,(float)width,(float)height);
 		else {
-			g.fill(100);
+			g.fill(r, this.g, b, a);
 			g.rect((float)x,(float)y,(float)width,(float)height);
 		}
 	}

@@ -1,5 +1,7 @@
 package sprites;
 import java.util.List;
+
+import processing.core.PApplet;
 import processing.core.PImage;
 
 import dsharma578.shapes.Rectangle;
@@ -12,12 +14,18 @@ public class StarShip extends Sprite {
 	public static final int SHIP_HEIGHT = 50;
 
 	private double xVel;
-	
-	public StarShip() 
+
+
+	public StarShip(PImage starShip) 
 	{
-		super( 167, 700, SHIP_WIDTH, SHIP_HEIGHT);
+		super( starShip, 167, 700, SHIP_WIDTH, SHIP_HEIGHT);
 		xVel = 0;
 	
+	}
+	
+	public void setup(PImage starShipIMG)
+	{
+		changeImage(starShipIMG);
 	}
 
 	public boolean hitsWall(ArrayList<Rectangle> wallBlocks) 
