@@ -29,7 +29,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
         
         screens.add(new StartScreen(this));
         screens.add(new MenuScreen(this));
-        screens.add(new GameL1(this, 5));
+        screens.add(new GameL1(this, 2));
 
         active = screens.get(0);
 
@@ -37,7 +37,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
 
     public void setup()
     {
-        frameRate(30);
+        frameRate(60);
         for (Screen s : screens)
             s.setup();
     }

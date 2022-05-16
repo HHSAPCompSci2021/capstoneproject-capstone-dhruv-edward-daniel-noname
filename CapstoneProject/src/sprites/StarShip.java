@@ -4,7 +4,6 @@ import java.util.List;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-import dsharma578.shapes.Rectangle;
 import java.util.ArrayList;
 
 
@@ -28,18 +27,21 @@ public class StarShip extends Sprite {
 		changeImage(starShipIMG);
 	}
 
-	public boolean hitsWall(ArrayList<Rectangle> wallBlocks) 
+	public boolean hitsWall(List<List<Sprite>> wallBlocks) 
 	{
 
-		for(Rectangle r : wallBlocks) 
+		for(List<Sprite> ls : wallBlocks) 
 		{
-			System.out.println("hit");
-
-			if(new Rectangle(super.getRX(), super.getRY(), super.getRW(), super.getRH()).intersects(r)) 
+ 			for(Sprite s : ls)
 			{
-				return true;
+				if(this.intersects(s) && s.hasImage())
+				{
+					return true;
+				}
+
 			}
 		}
+
 		return false;
 	}
 
@@ -48,10 +50,10 @@ public class StarShip extends Sprite {
 
 	public void walk(int dir) {
 		if(dir==-1) { //0=left
-			super.moveByAmount(-10, 0);
+			super.moveByAmount(-4, 0);
 		}
 		if(dir==1) { //1=right
-			super.moveByAmount(10, 0);
+			super.moveByAmount(4, 0);
 		}
 	}
 

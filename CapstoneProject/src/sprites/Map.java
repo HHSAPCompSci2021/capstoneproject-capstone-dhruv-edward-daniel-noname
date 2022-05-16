@@ -22,7 +22,7 @@ public class Map{
 	
 	public Map() 
     {
-		grid = new char[10][3];
+		grid = new char[166][3];
 	}
 
     public void setup(PApplet marker)
@@ -37,7 +37,7 @@ public class Map{
         {
             for(int j=0; j<grid[i].length; j++)
             {
-                wall.get(i).get(j).moveByAmount(0, 5);
+                wall.get(i).get(j).moveByAmount(0, scrollSpeed);
             }
         }
     }

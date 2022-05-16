@@ -50,12 +50,15 @@ public class GameL1 extends Screen {
 		surface.fill(0);
 		surface.rect(154, 0, 77, 800);
 
-		map.scroll(y);
+		map.scroll(scrollSpeed);
 
-		// if(ship.hitsWall(map.getWallRects())) 
-		// {
-		// 	scrollSpeed=0;
-		// }
+
+		if(ship.hitsWall(map.getWallRects())) 
+		{
+			scrollSpeed=-20;
+			System.out.println("collides ");
+
+		}
 
 		// System.out.println(map.getWallRects().size());
 
@@ -69,7 +72,6 @@ public class GameL1 extends Screen {
 		map.draw(surface);
 		ship.draw(surface);
 
-		y+=scrollSpeed;
 	}
 
 

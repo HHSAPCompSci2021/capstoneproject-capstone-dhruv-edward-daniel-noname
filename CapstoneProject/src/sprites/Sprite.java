@@ -10,24 +10,31 @@ public class Sprite extends Rectangle2D.Double {
 	
 	// FIELDS
 	private PImage image;
+	private boolean noImage;
 	private int r=100, g = 100, b=100, a = 255;
 	
 	// CONSTRUCTORS
 	
-	public Sprite(int x, int y, int w, int h) {
+	public Sprite(int x, int y, int w, int h) 
+	{
 		this(null, x, y, w, h);
+		noImage = true;
 	}
 	
 	public Sprite(PImage img, int x, int y, int w, int h) {
 		super(x,y,w,h);
 		image = img;
+		noImage = false;
+
 	}
 
 	public void changeImage(PImage img)
 	{
+		noImage = false;
 		image = img;
 	}
 	
+	public boolean hasImage(){return !noImage;}
 	public int getRX(){return (int)super.x;}
 	public int getRY(){return (int)super.y; }
 	public int getRW(){return (int)super.width;}
@@ -37,6 +44,11 @@ public class Sprite extends Rectangle2D.Double {
 	public void moveToLocation(double x, double y) {
 		super.x = x;
 		super.y = y;
+	}
+
+	public boolean intersects(Sprite other)
+	{
+		return super.intersects(other);
 	}
 	
 	public void moveByAmount(double x, double y) {
@@ -60,10 +72,14 @@ public class Sprite extends Rectangle2D.Double {
 	}
 
 	public void draw(PApplet g) {
-		if (image != null)
+		if (image != null){
+			g.stroke(204, 102, 0);
+			g.rect((float)x,(float)y,(float)width,(float)height);
 			g.image(image,(float)x,(float)y,(float)width,(float)height);
-		else {
+		}else {
+			
 			g.fill(r, this.g, b, a);
+			g.stroke(204, 102, 0);
 			g.rect((float)x,(float)y,(float)width,(float)height);
 		}
 	}
