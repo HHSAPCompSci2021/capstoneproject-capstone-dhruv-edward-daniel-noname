@@ -2,18 +2,18 @@ package screens;
 import java.awt.Point;
 import java.awt.Rectangle;
 import processing.core.PImage;
-
+//import processing.event.KeyEvent;
 import java.awt.event.KeyEvent;
 
 import sprites.Map;
 import sprites.StarShip;
+import utils.Vague;
 import core.DrawingSurface;
 
 
 public class GameL1 extends Screen {
 
 	private DrawingSurface surface;
-	private boolean pressed;
 	private PImage background, starShipIMG;
 //	private Map map;
 	private StarShip ship;
@@ -63,15 +63,15 @@ public class GameL1 extends Screen {
 
 		// System.out.println(map.getWallRects().size());
 
-		pressed = surface.isPressed(KeyEvent.VK_LEFT);
-		if(surface.keyReleased(KeyEvent.VK_LEFT) && pressed)
+		if(Vague.getKey() == 'a')
 		{
 			ship.walk(-1);
-			pressed = false;
 		}
 
-		if (surface.isPressed(KeyEvent.VK_RIGHT))
+		if (Vague.getKey() == 'd')
+		{
 			ship.walk(1);
+		}
 
 
 		map.draw(surface);
