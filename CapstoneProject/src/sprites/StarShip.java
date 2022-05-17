@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class StarShip extends Sprite {
 
-	public static final int SHIP_WIDTH = 50;
-	public static final int SHIP_HEIGHT = 50;
+	public static final int SHIP_WIDTH = 35;
+	public static final int SHIP_HEIGHT = 35;
 
 	private double xVel;
 
@@ -48,12 +48,13 @@ public class StarShip extends Sprite {
 
 
 
-	public void walk(int dir) {
+	public void walk(int dir) 
+	{
 		if(dir==-1) { //0=left
-			super.moveByAmount(-4, 0);
+			super.moveByAmount(-35, 0);
 		}
 		if(dir==1) { //1=right
-			super.moveByAmount(4, 0);
+			super.moveByAmount(35, 0);
 		}
 	}
 

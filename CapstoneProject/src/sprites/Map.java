@@ -20,11 +20,6 @@ public class Map{
     private PImage wallChunk;
     private List<List<Sprite>> wall = new ArrayList<List<Sprite>>();
 	
-	public Map() 
-    {
-		grid = new char[166][3];
-	}
-
     public void setup(PApplet marker)
     {
         wallChunk = marker.loadImage("CapstoneProject\\images\\wallchunk.png");
@@ -54,7 +49,7 @@ public class Map{
     public void makeSprites(PApplet marker)
     {
         int width =  marker.width/(grid[0].length);
-
+        System.out.println("width: "+width);
         for(int i=0; i<grid.length; i++)
         {
             wall.add(new ArrayList<Sprite>());
@@ -62,7 +57,7 @@ public class Map{
             {
                 int x = width*j;
                 int y = this.y+width*(i-grid.length);
-
+                
                 if(grid[i][j]=='O')
                 {
                     wall.get(i).add(new Sprite(x, y, width, width));
