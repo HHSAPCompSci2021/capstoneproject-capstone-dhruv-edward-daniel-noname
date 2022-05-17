@@ -62,13 +62,13 @@ public class GameL1 extends Screen {
 		}
 
 		// System.out.println(map.getWallRects().size());
-
-		if(Vague.getKey() == 'a')
+		char pressedKey = Vague.getKey();
+		if(pressedKey == 'a')
 		{
 			ship.walk(-1);
 		}
 
-		if (Vague.getKey() == 'd')
+		if (pressedKey == 'd')
 		{
 			ship.walk(1);
 		}
