@@ -11,7 +11,7 @@ import core.DrawingSurface;
 
 
 public class GameL1 extends Screen {
-
+	public final static String fileSeparator = System.getProperty("file.separator");
 	private DrawingSurface surface;
 	private PImage background, starShipIMG;
 //	private Map map;
@@ -25,7 +25,7 @@ public class GameL1 extends Screen {
 		this.surface = surface;
 
 		ship = new StarShip(starShipIMG);
-		map = new Map(5,16,"CapstoneProject\\images\\map.txt", y);
+		map = new Map(5,16,"images"+fileSeparator+"map.txt", y);
 
 		
 		scrollSpeed = speed;
@@ -34,8 +34,8 @@ public class GameL1 extends Screen {
 
 	public void setup()
 	{	
-		background = surface.loadImage("/images/menubg.jpg");
-		starShipIMG = surface.loadImage("CapstoneProject\\images\\StarShip.png");
+		background = surface.loadImage("images"+fileSeparator+"menubg.jpg");
+		starShipIMG = surface.loadImage("images"+fileSeparator+"StarShip.png");
 		
 		map.setup(surface);
 		ship.setup(starShipIMG);
