@@ -1,10 +1,15 @@
 package sprites;
 import java.util.List;
 
+import core.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
 
 import java.util.ArrayList;
+
+import java.awt.Point;
+import processing.core.PImage;
+
 
 
 public class StarShip extends Sprite {
@@ -13,7 +18,6 @@ public class StarShip extends Sprite {
 	public static final int SHIP_HEIGHT = 35;
 	private int health;
 	private double xVel;
-
 
 	public StarShip(PImage starShip) 
 	{
@@ -54,7 +58,8 @@ public class StarShip extends Sprite {
 
 		return false;
 	}
-
+	
+	
 	public int getHealth() {
 		return health;
 	}

@@ -57,6 +57,7 @@ public class GameL1 extends Screen {
 		if(ship.hitsWall(map.getWallRects())) 
 		{
 			System.out.println("collides ");
+			System.out.println(ship.getHealth());
 
 		}
 
@@ -74,8 +75,12 @@ public class GameL1 extends Screen {
 		ship.draw(surface);
 	}
 
-
-
+	public void ifZero() {
+		if(ship.getHealth()<0) {
+			surface.switchScreen(ScreenSwitcher.GAMEOVER_SCREEN);
+		}
+	}
+	
 	
 
 }
