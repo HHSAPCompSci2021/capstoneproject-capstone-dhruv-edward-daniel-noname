@@ -19,6 +19,7 @@ public class GameL1 extends Screen {
 	private StarShip ship;
 	private Map map;
 	private int y, scrollSpeed;
+	public final static String fileSeparator = System.getProperty("file.separator");
 
 	public GameL1(DrawingSurface surface, int speed) {
 		super(surface.width, surface.height);
@@ -26,7 +27,7 @@ public class GameL1 extends Screen {
 		this.surface = surface;
 
 		ship = new StarShip(starShipIMG);
-		map = new Map(11,17,"CapstoneProject\\images\\map.txt", y);
+		map = new Map(11,17,"images"+fileSeparator+"map.txt", y);
 
 		
 		scrollSpeed = speed;
@@ -35,8 +36,8 @@ public class GameL1 extends Screen {
 
 	public void setup()
 	{	
-		background = surface.loadImage("/images/menubg.jpg");
-		starShipIMG = surface.loadImage("CapstoneProject\\images\\StarShip.png");
+		background = surface.loadImage("images"+fileSeparator+"menubg.jpg");
+		starShipIMG = surface.loadImage("images"+fileSeparator+"StarShip.png");
 		
 		map.setup(surface);
 		ship.setup(starShipIMG);

@@ -15,6 +15,7 @@ public class StartScreen extends Screen {
 	private PImage background;
 	private Rectangle button;
 	private int y;
+	public final static String fileSeparator = System.getProperty("file.separator");
 	
 	public StartScreen(DrawingSurface surface) {
 		super(400,800);
@@ -26,7 +27,7 @@ public class StartScreen extends Screen {
 	public void setup()
 	{	
 		System.out.println("IN");
-		background = surface.loadImage("/images/menubg.jpg");
+		background = surface.loadImage("images"+fileSeparator+"menubg.jpg");
 	}
 
 	public void draw() 

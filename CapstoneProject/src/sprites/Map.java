@@ -19,10 +19,11 @@ public class Map{
     private int y;
     private PImage wallChunk;
     private List<List<Sprite>> wall = new ArrayList<List<Sprite>>();
-	
+	public final static String fileSeparator = System.getProperty("file.separator");
+
     public void setup(PApplet marker)
     {
-        wallChunk = marker.loadImage("CapstoneProject\\images\\wallchunk.png");
+        wallChunk = marker.loadImage("images"+fileSeparator+"wallchunk.png");
         makeSprites(marker);
     }
 
