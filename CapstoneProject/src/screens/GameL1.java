@@ -51,33 +51,27 @@ public class GameL1 extends Screen {
 		surface.rect(0, 0, 400, 800);
 		surface.fill(0);
 		surface.rect(154, 0, 77, 800);
-
 		map.scroll(scrollSpeed);
-
+		
 
 		if(ship.hitsWall(map.getWallRects())) 
 		{
-			scrollSpeed=-20;
 			System.out.println("collides ");
 
 		}
 
-		// System.out.println(map.getWallRects().size());
 		char pressedKey = Vague.getKey();
 		if(pressedKey == 'a')
 		{
-			ship.walk(-1);
+			ship.walk(-1, surface.width/(map.getGrid()[0].length));
 		}
 
 		if (pressedKey == 'd')
 		{
-			ship.walk(1);
+			ship.walk(1, surface.width/(map.getGrid()[0].length));
 		}
-
-
 		map.draw(surface);
 		ship.draw(surface);
-
 	}
 
 

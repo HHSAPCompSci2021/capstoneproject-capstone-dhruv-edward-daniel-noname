@@ -76,6 +76,10 @@ public class Map{
     {
         return wall;
     }
+    
+    public char[][] getGrid() {
+    	return grid;
+    }
 
     public void draw(PApplet marker)
     {
