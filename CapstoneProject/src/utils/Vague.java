@@ -9,9 +9,23 @@ import core.DrawingSurface;
 
 public class Vague
 {
+    private static char key = '0';
+
     public Vague()
     {
 
+    }
+
+    public static void KeyEvents(char newKey)
+    {
+        key  = newKey;
+    }
+
+    public static char getKey()
+    {
+        char out = key;
+        key = '0';
+        return out;
     }
     
     public static void ScreenSwitchFromInt(DrawingSurface surface, int screen)
