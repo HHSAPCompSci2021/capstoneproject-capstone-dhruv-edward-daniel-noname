@@ -57,6 +57,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
         System.out.println(mouseX+"  "+mouseY);
     
 	}
+
 	
 	public void mouseMoved() {
 		active.mouseMoved();
@@ -76,10 +77,16 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
 			key = 0;
 	}
 
-	public void keyReleased() {
+	public void keyReleased() 
+    {
 		while(keys.contains(keyCode))
 			keys.remove(new Integer(keyCode));
 	}
+
+    public boolean keyReleased(int keyCode2) 
+    {
+        return (keyCode2 == keyCode);
+    }
 
 	public boolean isPressed(Integer code) {
 		return keys.contains(code);

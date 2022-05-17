@@ -11,8 +11,9 @@ import core.DrawingSurface;
 
 
 public class GameL1 extends Screen {
-	public final static String fileSeparator = System.getProperty("file.separator");
+
 	private DrawingSurface surface;
+	private boolean pressed;
 	private PImage background, starShipIMG;
 //	private Map map;
 	private StarShip ship;
@@ -25,7 +26,7 @@ public class GameL1 extends Screen {
 		this.surface = surface;
 
 		ship = new StarShip(starShipIMG);
-		map = new Map(5,16,"images"+fileSeparator+"map.txt", y);
+		map = new Map(11,17,"CapstoneProject\\images\\map.txt", y);
 
 		
 		scrollSpeed = speed;
@@ -34,8 +35,8 @@ public class GameL1 extends Screen {
 
 	public void setup()
 	{	
-		background = surface.loadImage("images"+fileSeparator+"menubg.jpg");
-		starShipIMG = surface.loadImage("images"+fileSeparator+"StarShip.png");
+		background = surface.loadImage("/images/menubg.jpg");
+		starShipIMG = surface.loadImage("CapstoneProject\\images\\StarShip.png");
 		
 		map.setup(surface);
 		ship.setup(starShipIMG);
@@ -62,8 +63,12 @@ public class GameL1 extends Screen {
 
 		// System.out.println(map.getWallRects().size());
 
-		if (surface.isPressed(KeyEvent.VK_LEFT))
+		pressed = surface.isPressed(KeyEvent.VK_LEFT);
+		if(surface.keyReleased(KeyEvent.VK_LEFT) && pressed)
+		{
 			ship.walk(-1);
+			pressed = false;
+		}
 
 		if (surface.isPressed(KeyEvent.VK_RIGHT))
 			ship.walk(1);
