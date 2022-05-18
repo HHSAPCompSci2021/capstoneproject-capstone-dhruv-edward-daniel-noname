@@ -59,6 +59,10 @@ public class StarShip extends Sprite {
 		return false;
 	}
 	
+	public void shoot() {
+		
+	}
+	
 	
 	public int getHealth() {
 		return health;

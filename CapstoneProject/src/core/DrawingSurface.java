@@ -33,7 +33,8 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
         
         screens.add(new StartScreen(this));
         screens.add(new MenuScreen(this));
-        screens.add(new GameL1(this, 6));
+        screens.add(new GameL1(this, 6, "map.txt"));
+        screens.add(new GameL1(this, 7, "map2.txt"));
 
         active = screens.get(0);
 
@@ -95,9 +96,6 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
     @Override
     public void switchScreen(int i) {
         active = screens.get(i);
-        System.out.println(i);
-
-        
     }
 
     public void keyPressed() {    

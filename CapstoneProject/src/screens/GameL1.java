@@ -21,15 +21,12 @@ public class GameL1 extends Screen {
 	private int y, scrollSpeed;
 	public final static String fileSeparator = System.getProperty("file.separator");
 
-	public GameL1(DrawingSurface surface, int speed) {
+	public GameL1(DrawingSurface surface, int speed, String gameMap) {
 		super(surface.width, surface.height);
 		y=0;
 		this.surface = surface;
-
 		ship = new StarShip(starShipIMG);
-		map = new Map(11,21,"images"+fileSeparator+"map.txt", y);
-
-		
+		map = new Map(11,21,"images"+fileSeparator+gameMap, y);
 		scrollSpeed = speed;
 
 	}
