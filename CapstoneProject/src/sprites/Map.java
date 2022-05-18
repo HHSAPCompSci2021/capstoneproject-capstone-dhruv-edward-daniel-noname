@@ -42,10 +42,11 @@ public class Map{
         }
     }
 
-	public Map(int lanes, int length, String filename,  int y) 
+	public Map(int length, String filename,  int y) 
     {
 		this.y = y;
 		setDimensions(filename);
+
 		grid = new char[mapLength][mapWidth];
         Vague.grid = grid;
 		readData(filename, grid);
@@ -55,9 +56,6 @@ public class Map{
     {
         int width =  marker.width/(grid[0].length);
         Vague.db.put("map width: ", width);
-        System.out.println("TargetMAP: "+marker.width/(grid[0].length));
-        System.out.println("TargetMAP: "+marker.width);
-        System.out.println("TargetMAP: "+(grid[0].length));
 
         for(int i=0; i<grid.length; i++)
         {

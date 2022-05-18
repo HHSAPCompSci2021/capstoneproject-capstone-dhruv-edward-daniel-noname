@@ -11,7 +11,7 @@ import utils.Vague;
 import core.DrawingSurface;
 
 
-public class GameL1 extends Screen {
+public class Game extends Screen {
 
 	private DrawingSurface surface;
 	private PImage background, starShipIMG;
@@ -21,13 +21,13 @@ public class GameL1 extends Screen {
 	private int y, scrollSpeed;
 	public final static String fileSeparator = System.getProperty("file.separator");
 
-	public GameL1(DrawingSurface surface, int speed, String gameMap) {
+	public Game(DrawingSurface surface, int mapLength, int speed, String gameMap) {
 		super(surface.width, surface.height);
 		System.out.println("surface width: "+surface.width);
 		y=0;
 		this.surface = surface;
 		ship = new StarShip(starShipIMG);
-		map = new Map(11,21,"CapstoneProject\\images\\map.txt", y);
+		map = new Map(mapLength,"CapstoneProject\\images\\mapL3.txt", y);
 		//"images"+fileSeparator+gameMap
 		scrollSpeed = speed;
 

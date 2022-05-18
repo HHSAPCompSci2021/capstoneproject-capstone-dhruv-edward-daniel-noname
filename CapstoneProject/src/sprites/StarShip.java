@@ -21,7 +21,7 @@ public class StarShip extends Sprite {
 
 	public StarShip(PImage starShip) 
 	{
-		super(starShip, 35*5, 700, SHIP_WIDTH, SHIP_HEIGHT);
+		super(starShip, 35*5, 600, SHIP_WIDTH, SHIP_HEIGHT);
 		xVel = 0;
 		health = 100;
 	

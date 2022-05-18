@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 
 
 import screens.ScreenSwitcher;
-import screens.GameL1;
+import screens.Game;
 import screens.StartScreen;
 import utils.Vague;
 import screens.MenuScreen;
@@ -33,8 +33,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
         
         screens.add(new StartScreen(this));
         screens.add(new MenuScreen(this));
-        screens.add(new GameL1(this, 6, "map.txt"));
-        screens.add(new GameL1(this, 7, "map2.txt"));
+        screens.add(new Game(this, 63, 5, "map.txt"));
+        screens.add(new Game(this,10,  7, "map2.txt"));
+        screens.add(new Game(this, 73, 3, "mapL3.txt"));
 
         active = screens.get(0);
 
