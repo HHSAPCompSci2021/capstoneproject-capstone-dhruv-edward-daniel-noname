@@ -15,7 +15,6 @@ public class GameL1 extends Screen {
 
 	private DrawingSurface surface;
 	private PImage background, starShipIMG;
-//	private Map map;
 	private StarShip ship;
 	private Map map;
 	private int y, scrollSpeed;
@@ -79,6 +78,4 @@ public class GameL1 extends Screen {
 		ship.resetHealth();
 		ship.x=175;
 	}
-	
-
 }

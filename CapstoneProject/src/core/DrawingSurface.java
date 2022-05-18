@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import jay.jaysound.JayLayer;
 import processing.core.PApplet;
 import java.awt.event.KeyEvent;
 
@@ -24,7 +25,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
     private ArrayList<Screen> screens;
     private ArrayList<Integer> keys;
     private Map<Character, Record> map = new HashMap<Character, Record>();
-
+	public final static String fileSeparator = System.getProperty("file.separator");
 
     public DrawingSurface()
     {
@@ -35,7 +36,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
         screens.add(new MenuScreen(this));
         screens.add(new GameL1(this, 6, "map.txt"));
         screens.add(new GameL1(this, 7, "map2.txt"));
-
+        JayLayer sound = new JayLayer("audio"+fileSeparator, "audio"+fileSeparator, false);
         active = screens.get(0);
 
     }
