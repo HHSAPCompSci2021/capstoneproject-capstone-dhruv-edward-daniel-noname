@@ -11,7 +11,6 @@ import java.util.List;
 
 import processing.core.PImage;
 import java.util.Scanner;
-import dsharma578.shapes.Rectangle;
 import utils.Vague;
 
 import java.awt.geom.Rectangle2D;
@@ -19,8 +18,7 @@ import processing.core.PApplet;
 
 public class Map{
 	private char[][] grid;
-    private int y;
-    private int mapLength,mapWidth;
+    private int y, mapLength,mapWidth;
     private PImage wallChunk;
     private List<List<Sprite>> wall = new ArrayList<List<Sprite>>();
 	public final static String fileSeparator = System.getProperty("file.separator");
@@ -42,9 +40,9 @@ public class Map{
         }
     }
 
-	public Map(String filename,  int y) 
+	public Map(String filename) 
     {
-		this.y = y;
+		y=0;
 		setDimensions(filename);
 		grid = new char[mapLength][mapWidth];
         Vague.grid = grid;

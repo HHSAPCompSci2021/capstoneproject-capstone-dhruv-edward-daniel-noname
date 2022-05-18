@@ -26,7 +26,7 @@ public class GameL1 extends Screen {
 		y=0;
 		this.surface = surface;
 		ship = new StarShip(starShipIMG);
-		map = new Map("images"+fileSeparator+gameMap, y);
+		map = new Map("images"+fileSeparator+gameMap);
 		scrollSpeed = speed;
 
 	}
@@ -77,6 +77,7 @@ public class GameL1 extends Screen {
 	public void reset() {
 		y=0;
 		ship.resetHealth();
+		ship.x=175;
 	}
 	
 
