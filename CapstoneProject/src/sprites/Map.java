@@ -4,6 +4,8 @@ import java.awt.Point;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,12 +20,14 @@ import processing.core.PApplet;
 public class Map{
 	private char[][] grid;
     private int y;
+    private int mapLength,mapWidth;
     private PImage wallChunk;
     private List<List<Sprite>> wall = new ArrayList<List<Sprite>>();
-	
+	public final static String fileSeparator = System.getProperty("file.separator");
+
     public void setup(PApplet marker)
     {
-        wallChunk = marker.loadImage("CapstoneProject\\images\\wallchunk.png");
+        wallChunk = marker.loadImage("images"+fileSeparator+"wallchunk.png");
         makeSprites(marker);
     }
 
@@ -41,11 +45,10 @@ public class Map{
 	public Map(int lanes, int length, String filename,  int y) 
     {
 		this.y = y;
-		grid = new char[length][lanes];
+		setDimensions(filename);
+		grid = new char[mapLength][mapWidth];
         Vague.grid = grid;
 		readData(filename, grid);
-
-        //makeSprites();
 	}
 	
     public void makeSprites(PApplet marker)
@@ -81,6 +84,10 @@ public class Map{
     {
         return wall;
     }
+    
+    public char[][] getGrid() {
+    	return grid;
+    }
 
     public void draw(PApplet marker)
     {
@@ -112,10 +119,10 @@ public class Map{
 					
 					while (in.hasNext()) {
 						String line = in.nextLine();
-						for(int i = 0; i < line.length(); i++)
+						for(int i = 0; i < line.length(); i++) {
 							if (count < gameData.length && i < gameData[count].length)
 								gameData[count][i] = line.charAt(i);
-
+						}
 						count++;
 					}
 
@@ -128,6 +135,16 @@ public class Map{
 			
 		} else {
 			throw new IllegalArgumentException("Data file " + filename + " does not exist.");
+		}
+	}
+	
+	public void setDimensions(String file) {
+		try {
+			mapLength = (int)Files.lines(Paths.get(file)).count();
+			Scanner in = new Scanner(new FileReader(new File(file)));
+			mapWidth = in.nextLine().length();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
