@@ -28,10 +28,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
 	public final static String fileSeparator = System.getProperty("file.separator");
 
     public DrawingSurface()
-    {
+    {	setSize(400,800);
         keys = new ArrayList<Integer>();
         screens = new ArrayList<Screen>();
-        
         screens.add(new StartScreen(this));
         screens.add(new MenuScreen(this));
         screens.add(new GameL1(this, 6, "map.txt"));
