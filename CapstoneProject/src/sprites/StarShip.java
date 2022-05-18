@@ -21,7 +21,7 @@ public class StarShip extends Sprite {
 
 	public StarShip(PImage starShip) 
 	{
-		super(starShip, 170, 700, SHIP_WIDTH, SHIP_HEIGHT);
+		super(starShip, 175, 700, SHIP_WIDTH, SHIP_HEIGHT);
 		xVel = 0;
 		health = 100;
 	
@@ -72,6 +72,10 @@ public class StarShip extends Sprite {
 	public void walk(int dir, int amount) 
 	{
 		super.moveByAmount(dir*amount, 0);
+	}
+
+	public void resetHealth() {
+		health = 100;
 	}
 
 }

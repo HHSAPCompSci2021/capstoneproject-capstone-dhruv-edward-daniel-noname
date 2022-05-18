@@ -41,7 +41,7 @@ public class Map{
         }
     }
 
-	public Map(int lanes, int length, String filename,  int y) 
+	public Map(String filename,  int y) 
     {
 		this.y = y;
 		setDimensions(filename);

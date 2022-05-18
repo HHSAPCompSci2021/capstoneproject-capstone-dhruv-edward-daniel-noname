@@ -26,7 +26,7 @@ public class GameL1 extends Screen {
 		y=0;
 		this.surface = surface;
 		ship = new StarShip(starShipIMG);
-		map = new Map(11,21,"images"+fileSeparator+gameMap, y);
+		map = new Map("images"+fileSeparator+gameMap, y);
 		scrollSpeed = speed;
 
 	}
@@ -53,12 +53,12 @@ public class GameL1 extends Screen {
 
 		}
 		char pressedKey = Vague.getKey();
-		if(pressedKey == 'a' && ship.x-(surface.width/(map.getGrid()[0].length))>=0)
+		if(pressedKey == 'a' && ship.x-(surface.width/(map.getGrid()[0].length))>=-10)
 		{
 			ship.walk(-1, surface.width/(map.getGrid()[0].length));
 		}
 
-		if (pressedKey == 'd' && ship.x+(surface.width/(map.getGrid()[0].length))<=surface.width)
+		if (pressedKey == 'd' && ship.x+(surface.width/(map.getGrid()[0].length))<=surface.width-10)
 		{
 			ship.walk(1, surface.width/(map.getGrid()[0].length));
 		}
@@ -70,10 +70,14 @@ public class GameL1 extends Screen {
 
 	public void ifZero() {
 		if(ship.getHealth()<0) {
+			reset();
 			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
 		}
 	}
-	
+	public void reset() {
+		y=0;
+		ship.resetHealth();
+	}
 	
 
 }
