@@ -4,12 +4,14 @@ import processing.core.PApplet;
 
 import screens.ScreenSwitcher;
 import core.DrawingSurface;
-
+import java.util.*;
 
 
 public class Vague
 {
     private static char key = '0';
+    public static char[][] grid;
+    public static Hashtable<String, Integer> db = new Hashtable<String, Integer>();
 
     public Vague()
     {
