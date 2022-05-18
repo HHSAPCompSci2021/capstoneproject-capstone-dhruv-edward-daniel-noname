@@ -22,11 +22,12 @@ public class GameL1 extends Screen {
 
 	public GameL1(DrawingSurface surface, int speed) {
 		super(surface.width, surface.height);
+		System.out.println("surface width: "+surface.width);
 		y=0;
 		this.surface = surface;
 
-		ship = new StarShip(starShipIMG);
-		map = new Map(11,17,"CapstoneProject\\images\\map.txt", y);
+		map = new Map(11,18,"CapstoneProject\\images\\map.txt", y);
+		ship = new StarShip(starShipIMG, surface);
 
 		
 		scrollSpeed = speed;

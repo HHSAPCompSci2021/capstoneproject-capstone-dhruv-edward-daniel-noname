@@ -3,23 +3,24 @@ import java.util.List;
 
 import processing.core.PApplet;
 import processing.core.PImage;
-
+import utils.Vague;
 import java.util.ArrayList;
 
 
 public class StarShip extends Sprite {
 
-	public static final int SHIP_WIDTH = 35;
-	public static final int SHIP_HEIGHT = 35;
+	private static int SHIP_WIDTH = 35;
+	private static int SHIP_HEIGHT = 35;
 
 	private double xVel;
 
 
-	public StarShip(PImage starShip) 
+	public StarShip(PImage starShip, PApplet marker) 
 	{
-		super( starShip, 167, 700, SHIP_WIDTH, SHIP_HEIGHT);
+		super( starShip, 35*5, 700, 35, 35);
+
+		
 		xVel = 0;
-	
 	}
 	
 	public void setup(PImage starShipIMG)

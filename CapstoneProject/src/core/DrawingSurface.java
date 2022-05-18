@@ -122,7 +122,6 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
     
         // now record has full info
         Vague.KeyEvents(key);
-        println(key + ", time: " + (record.releaseTime - record.pressedTime));
     }
 }
 

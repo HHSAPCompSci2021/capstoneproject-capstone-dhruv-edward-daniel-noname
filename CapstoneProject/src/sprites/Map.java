@@ -10,6 +10,7 @@ import java.util.List;
 import processing.core.PImage;
 import java.util.Scanner;
 import dsharma578.shapes.Rectangle;
+import utils.Vague;
 
 import java.awt.geom.Rectangle2D;
 import processing.core.PApplet;
@@ -41,6 +42,7 @@ public class Map{
     {
 		this.y = y;
 		grid = new char[length][lanes];
+        Vague.grid = grid;
 		readData(filename, grid);
 
         //makeSprites();
@@ -49,7 +51,11 @@ public class Map{
     public void makeSprites(PApplet marker)
     {
         int width =  marker.width/(grid[0].length);
-        System.out.println("width: "+width);
+        Vague.db.put("map width: ", width);
+        System.out.println("TargetMAP: "+marker.width/(grid[0].length));
+        System.out.println("TargetMAP: "+marker.width);
+        System.out.println("TargetMAP: "+(grid[0].length));
+
         for(int i=0; i<grid.length; i++)
         {
             wall.add(new ArrayList<Sprite>());
