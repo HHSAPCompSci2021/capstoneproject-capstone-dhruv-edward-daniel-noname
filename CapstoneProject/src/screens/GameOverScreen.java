@@ -12,7 +12,7 @@ public class GameOverScreen extends Screen{
 	private PImage background;
 	public final static String fileSeparator = System.getProperty("file.separator");
 
-	public GameOverScreen(int width, int height) {
+	public GameOverScreen(DrawingSurface surface) {
 		super(400, 800);
 		this.surface = surface;
 		button = new Rectangle(surface.width/2+50,500,200,100);

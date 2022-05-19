@@ -13,6 +13,7 @@ import java.awt.event.KeyEvent;
 import screens.ScreenSwitcher;
 import screens.GameL1;
 import screens.StartScreen;
+import screens.GameOverScreen;
 import utils.Vague;
 import screens.MenuScreen;
 
@@ -35,6 +36,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
         screens.add(new MenuScreen(this));
         screens.add(new GameL1(this, 6, "map.txt"));
         screens.add(new GameL1(this, 7, "map2.txt"));
+        screens.add(new GameOverScreen(this));
         
         JayLayer sound = new JayLayer("audio"+fileSeparator, "audio"+fileSeparator, false);
         String[] soundEffects = new String[] {"Miami Disco.mp3"};
