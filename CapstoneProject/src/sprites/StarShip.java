@@ -14,14 +14,15 @@ import processing.core.PImage;
 
 public class StarShip extends Sprite {
 
-	public static final int SHIP_WIDTH = 35;
+	public static final int SHIP_WIDTH = 36;
 	public static final int SHIP_HEIGHT = 35;
 	private int health;
 	private double xVel;
 
-	public StarShip(PImage starShip) 
+	public StarShip(PImage starShip, int x) 
 	{
-		super(starShip, 35*5, 600, SHIP_WIDTH, SHIP_HEIGHT);
+//		super(starShip, 35*5, 600, SHIP_WIDTH, SHIP_HEIGHT);
+		super(starShip, x, 700, SHIP_WIDTH, SHIP_HEIGHT);
 		xVel = 0;
 		health = 100;
 	

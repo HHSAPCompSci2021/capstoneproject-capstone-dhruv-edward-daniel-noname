@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import jay.jaysound.JayLayer;
 import processing.core.PApplet;
 import java.awt.event.KeyEvent;
 
@@ -24,19 +25,31 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
     private ArrayList<Screen> screens;
     private ArrayList<Integer> keys;
     private Map<Character, Record> map = new HashMap<Character, Record>();
-
+	public final static String fileSeparator = System.getProperty("file.separator");
 
     public DrawingSurface()
-    {
+    {	setSize(400,800);
         keys = new ArrayList<Integer>();
         screens = new ArrayList<Screen>();
-        
         screens.add(new StartScreen(this));
         screens.add(new MenuScreen(this));
-        screens.add(new Game(this, 63, 5, "map.txt"));
-        screens.add(new Game(this,10,  7, "map2.txt"));
-        screens.add(new Game(this, 73, 3, "mapL3.txt"));
 
+        screens.add(new Game(this, 5, "map.txt"));
+        screens.add(new Game(this,  7, "map2.txt"));
+        screens.add(new Game(this, 3, "map3.txt"));
+
+        // screens.add(new GameL1(this, 6, "map.txt"));
+        // screens.add(new GameL1(this, 7, "map2.txt"));
+        
+        JayLayer sound = new JayLayer("audio"+fileSeparator, "audio"+fileSeparator, false);
+        String[] soundEffects = new String[] {"Miami Disco.mp3"};
+		String[] songs = new String[] {"Miami Disco.mp3"};
+        sound.addPlayList();
+        sound.addSongs(0, songs);
+        sound.addSoundEffects(soundEffects);
+        sound.changePlayList(0);
+        sound.nextSong();
+        
         active = screens.get(0);
 
     }

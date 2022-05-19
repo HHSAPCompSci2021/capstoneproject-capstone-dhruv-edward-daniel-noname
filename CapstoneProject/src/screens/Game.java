@@ -9,27 +9,25 @@ import sprites.Map;
 import sprites.StarShip;
 import utils.Vague;
 import core.DrawingSurface;
+import jay.jaysound.JayLayer;
 
 
 public class Game extends Screen {
 
 	private DrawingSurface surface;
 	private PImage background, starShipIMG;
-//	private Map map;
 	private StarShip ship;
 	private Map map;
 	private int y, scrollSpeed;
 	public final static String fileSeparator = System.getProperty("file.separator");
 
-	public Game(DrawingSurface surface, int mapLength, int speed, String gameMap) {
+	public Game(DrawingSurface surface, int speed, String gameMap) {
 		super(surface.width, surface.height);
-		map = new Map("CapstoneProject\\images\\mapL3.txt"/*"images"+fileSeparator+gameMap*/);
-		ship = new StarShip(starShipIMG);
-
-		this.surface = surface;
 		y=0;
+		this.surface = surface;
+		ship = new StarShip(starShipIMG,surface.width/2-20);
+		map = new Map(/*"maps"+fileSeparator+*/"CapstoneProject\\maps\\" + gameMap);
 		scrollSpeed = speed;
-
 	}
 
 	public void setup()
@@ -63,7 +61,6 @@ public class Game extends Screen {
 		{
 			ship.walk(1, surface.width/(map.getGrid()[0].length));
 		}
-		
 		map.draw(surface);
 		ship.draw(surface);
 		ifZero();
@@ -80,6 +77,4 @@ public class Game extends Screen {
 		ship.resetHealth();
 		ship.x=175;
 	}
-	
-
 }
