@@ -9,6 +9,7 @@ import sprites.Map;
 import sprites.StarShip;
 import utils.Vague;
 import core.DrawingSurface;
+import jay.jaysound.JayLayer;
 
 
 public class GameL1 extends Screen {
@@ -27,7 +28,6 @@ public class GameL1 extends Screen {
 		ship = new StarShip(starShipIMG,surface.width/2-20);
 		map = new Map("maps"+fileSeparator+gameMap);
 		scrollSpeed = speed;
-
 	}
 
 	public void setup()
@@ -61,7 +61,6 @@ public class GameL1 extends Screen {
 		{
 			ship.walk(1, surface.width/(map.getGrid()[0].length));
 		}
-		
 		map.draw(surface);
 		ship.draw(surface);
 		ifZero();
