@@ -69,7 +69,7 @@ public class Game extends Screen {
 	public void ifZero() {
 		if(ship.getHealth()<0) {
 			reset();
-			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
+			surface.switchScreen(ScreenSwitcher.GAMEOVER_SCREEN);
 		}
 	}
 	public void reset() {
