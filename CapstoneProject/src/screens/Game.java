@@ -23,12 +23,11 @@ public class Game extends Screen {
 
 	public Game(DrawingSurface surface, int mapLength, int speed, String gameMap) {
 		super(surface.width, surface.height);
-		System.out.println("surface width: "+surface.width);
-		y=0;
-		this.surface = surface;
+		map = new Map("CapstoneProject\\images\\mapL3.txt"/*"images"+fileSeparator+gameMap*/);
 		ship = new StarShip(starShipIMG);
-		map = new Map(mapLength,"CapstoneProject\\images\\mapL3.txt", y);
-		//"images"+fileSeparator+gameMap
+
+		this.surface = surface;
+		y=0;
 		scrollSpeed = speed;
 
 	}
@@ -55,12 +54,12 @@ public class Game extends Screen {
 
 		}
 		char pressedKey = Vague.getKey();
-		if(pressedKey == 'a' && ship.x-(surface.width/(map.getGrid()[0].length))>=0)
+		if(pressedKey == 'a' && ship.x-(surface.width/(map.getGrid()[0].length))>=-10)
 		{
 			ship.walk(-1, surface.width/(map.getGrid()[0].length));
 		}
 
-		if (pressedKey == 'd' && ship.x+(surface.width/(map.getGrid()[0].length))<=surface.width)
+		if (pressedKey == 'd' && ship.x+(surface.width/(map.getGrid()[0].length))<=surface.width-10)
 		{
 			ship.walk(1, surface.width/(map.getGrid()[0].length));
 		}
@@ -72,10 +71,15 @@ public class Game extends Screen {
 
 	public void ifZero() {
 		if(ship.getHealth()<0) {
+			reset();
 			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
 		}
 	}
-	
+	public void reset() {
+		y=0;
+		ship.resetHealth();
+		ship.x=175;
+	}
 	
 
 }

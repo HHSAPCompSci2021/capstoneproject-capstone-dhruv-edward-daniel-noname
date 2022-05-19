@@ -4,7 +4,7 @@ import java.util.List;
 import core.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
-import utils.Vague;
+
 import java.util.ArrayList;
 
 import java.awt.Point;
@@ -26,7 +26,7 @@ public class StarShip extends Sprite {
 		health = 100;
 	
 	}
-		
+	
 	public void setup(PImage starShipIMG)
 	{
 		changeImage(starShipIMG);
@@ -72,6 +72,10 @@ public class StarShip extends Sprite {
 	public void walk(int dir, int amount) 
 	{
 		super.moveByAmount(dir*amount, 0);
+	}
+
+	public void resetHealth() {
+		health = 100;
 	}
 
 }
