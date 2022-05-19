@@ -20,6 +20,7 @@ public class GameOverScreen extends Screen{
 	}
 	
 	public void setup() {
+		System.out.println("its in");
 		background=surface.loadImage("images" + fileSeparator + "GameOver.PNG");
 	}
 	
