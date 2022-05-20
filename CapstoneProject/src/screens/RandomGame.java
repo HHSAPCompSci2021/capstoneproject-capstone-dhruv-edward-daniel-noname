@@ -64,6 +64,7 @@ public class RandomGame extends Screen {
 
 	public void ifZero() {
 		if(ship.getHealth()<0) {
+			int score = 1000*map.getCurrentRow();
 			reset();
 			surface.switchScreen(ScreenSwitcher.GAMEOVER_SCREEN);
 		}

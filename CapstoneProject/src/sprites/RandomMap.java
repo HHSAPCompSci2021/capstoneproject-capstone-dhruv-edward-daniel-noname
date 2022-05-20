@@ -211,6 +211,10 @@ public class RandomMap
     public int[][] getGrid() {
         return grid;
     }
+    
+    public int getCurrentRow() {
+    	return currentRow;
+    }
 
 	
 }

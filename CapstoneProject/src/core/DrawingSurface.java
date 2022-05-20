@@ -38,10 +38,9 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
         screens.add(new MenuScreen(this));
         screens.add(new Game(this,6,"map.txt"));
         screens.add(new Game(this,7,"map2.txt"));
-        //screens.add(new Game(this,3,"map3.txt"));
+        screens.add(new Game(this,3,"map3.txt"));
         screens.add(new RandomGame(this, 6));
         screens.add(new GameOverScreen(this));
-        //screens.add(new Game(this, 6, "CapstoneProject\\maps\\map.txt"));
 
 
         active = screens.get(0);
