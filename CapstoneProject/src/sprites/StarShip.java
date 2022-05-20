@@ -22,16 +22,14 @@ public class StarShip extends Sprite {
 	private PApplet surface;
 	private PImage bulletImage;
 	private int health, ticks = 1000;
-	private double xVel;
+	private int energy;
 
 	public StarShip(PApplet surface, PImage starShip, int x) 
 	{
-//		super(starShip, 35*5, 600, SHIP_WIDTH, SHIP_HEIGHT);
 		super(starShip, x, 700, SHIP_WIDTH, SHIP_HEIGHT);
 		this.surface =  surface;
-		xVel = 0;
 		health = 100;
-	
+		energy = 1500;
 	}
 
 	
@@ -64,7 +62,7 @@ public class StarShip extends Sprite {
 		surface.rect(10, surface.height-12, 100, 5);
 		surface.fill(255,255,255);
 		surface.rect(10, surface.height-12, health, 5);
-
+		energy++;
 	}
 
 	public boolean hitsWall(List<List<Sprite>> wallBlocks) 
@@ -90,9 +88,10 @@ public class StarShip extends Sprite {
 	{
 		ticks = 0;
 		
-		if(bullets.size() < 2)
+		if(bullets.size() < 2 && energy>=500)
 		{
 			bullets.add(new Bullet(surface, bulletImage, super.getRX()+(int)(15/2)+4 , super.getRY(), 9));
+			energy-=50;
 		}
 	}
 	
