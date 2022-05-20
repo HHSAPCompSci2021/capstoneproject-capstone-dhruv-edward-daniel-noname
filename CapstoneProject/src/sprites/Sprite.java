@@ -11,7 +11,7 @@ public class Sprite extends Rectangle2D.Double {
 	// FIELDS
 	private PImage image;
 	private boolean noImage;
-	private int r=100, g = 100, b=100, a = 255;
+	private int r=100, g = 100, b=100, a = 255, id = -1;
 	
 	// CONSTRUCTORS
 	
@@ -28,6 +28,20 @@ public class Sprite extends Rectangle2D.Double {
 
 	}
 
+	public Sprite(PImage img, int x, int y, int w, int h, int id) {
+		super(x,y,w,h);
+		image = img;
+		this.id = id;
+		noImage = false;
+
+	}
+	public Sprite(int x, int y, int w, int h, int id) {
+		super(x,y,w,h);
+		this.id = id;
+		noImage = false;
+
+	}
+
 	public void changeImage(PImage img)
 	{
 		noImage = false;
@@ -39,6 +53,7 @@ public class Sprite extends Rectangle2D.Double {
 	public int getRY(){return (int)super.y; }
 	public int getRW(){return (int)super.width;}
 	public int getRH(){return (int)super.height;}
+	public int getId(){return id;}
 	
 	// METHODS	
 	public void moveToLocation(double x, double y) {
