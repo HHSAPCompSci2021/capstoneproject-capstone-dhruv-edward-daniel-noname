@@ -60,6 +60,7 @@ public class StarShip extends Sprite {
 
 		surface.rect(0, surface.height-20, surface.width, 20);
 		surface.rect(10, surface.height-12, 100, 5);
+		surface.stroke(255);
 		surface.fill(255,255,255);
 		surface.rect(10, surface.height-12, health, 5);
 		energy++;
@@ -72,7 +73,7 @@ public class StarShip extends Sprite {
 		{
 				for(Sprite s : ls)
 			{
-				if(this.intersects(s) && (s.getId() == 1))
+				if(this.intersects(s) && (s.getId()==1))
 				{
 					health--;
 					return true;

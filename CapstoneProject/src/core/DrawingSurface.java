@@ -45,14 +45,14 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
         // screens.add(new GameL1(this, 6, "map.txt"));
         // screens.add(new GameL1(this, 7, "map2.txt"));
         
-        JayLayer sound = new JayLayer("audio"+fileSeparator, "audio"+fileSeparator, false);
-        String[] soundEffects = new String[] {"Miami Disco.mp3"};
-		String[] songs = new String[] {"Miami Disco.mp3"};
-        sound.addPlayList();
-        sound.addSongs(0, songs);
-        sound.addSoundEffects(soundEffects);
-        sound.changePlayList(0);
-        sound.nextSong();
+//        JayLayer sound = new JayLayer("audio"+fileSeparator, "audio"+fileSeparator, false);
+//        String[] soundEffects = new String[] {"Miami Disco.mp3"};
+//		String[] songs = new String[] {"Miami Disco.mp3"};
+//        sound.addPlayList();
+//        sound.addSongs(0, songs);
+//        sound.addSoundEffects(soundEffects);
+//        sound.changePlayList(0);
+//        sound.nextSong();
         
         active = screens.get(0);
 

@@ -72,7 +72,7 @@ public class Map{
                 }
                 if(grid[i][j]=='X')
                 {
-                    wall.get(i).add(new Sprite(wallChunk, x, y, width, width));
+                    wall.get(i).add(new Sprite(wallChunk, x, y, width, width,1));
                 }
             }
         }
