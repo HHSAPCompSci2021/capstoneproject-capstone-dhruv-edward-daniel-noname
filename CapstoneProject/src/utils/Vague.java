@@ -41,7 +41,7 @@ public class Vague
                 surface.switchScreen(ScreenSwitcher.START_SCREEN);
                 break;
             case 2:
-                surface.switchScreen(ScreenSwitcher.GAME_SCREEN);
+                surface.switchScreen(ScreenSwitcher.GAME1_SCREEN);
                 break;
             default:
                 break;

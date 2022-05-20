@@ -56,7 +56,7 @@ public class StartScreen extends Screen {
 	{
 		Point p = new Point(surface.mouseX,surface.mouseY);
 		if (button.contains(p)){
-		 	surface.switchScreen(ScreenSwitcher.GAME_SCREEN);
+		 	surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
 		}
 	}
 	
