@@ -25,8 +25,9 @@ public class Game extends Screen {
 		super(surface.width, surface.height);
 		y=0;
 		this.surface = surface;
-		ship = new StarShip(starShipIMG,surface.width/2-20);
-		map = new Map(/*"maps"+fileSeparator+*/"CapstoneProject\\maps\\" + gameMap);
+		map = new Map("maps"+fileSeparator+ gameMap);
+		ship = new StarShip(surface, starShipIMG,surface.width/2-20);
+		map = new Map("maps"+fileSeparator+gameMap);
 		scrollSpeed = speed;
 	}
 
@@ -34,9 +35,11 @@ public class Game extends Screen {
 	{	
 		background = surface.loadImage("images"+fileSeparator+"menubg.jpg");
 		starShipIMG = surface.loadImage("images"+fileSeparator+"StarShip.png");
+		PImage fire = surface.loadImage("images"+fileSeparator+"fire_out.png");
+		PImage bullet = surface.loadImage("images"+fileSeparator+"bullet.png");
 		
 		map.setup(surface);
-		ship.setup(starShipIMG);
+		ship.setup(starShipIMG, fire, bullet);
 	}
 
 	public void draw() 
