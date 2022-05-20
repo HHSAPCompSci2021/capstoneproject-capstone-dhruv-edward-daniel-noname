@@ -12,7 +12,7 @@ import core.DrawingSurface;
 import jay.jaysound.JayLayer;
 
 
-public class Game extends Screen {
+public class RandomGame extends Screen {
 
 	private DrawingSurface surface;
 	private PImage background, starShipIMG;
@@ -21,7 +21,7 @@ public class Game extends Screen {
 	private int y, scrollSpeed;
 	public final static String fileSeparator = System.getProperty("file.separator");
 
-	public Game(DrawingSurface surface, int speed) {
+	public RandomGame(DrawingSurface surface, int speed) {
 		super(surface.width, surface.height);
 		y=0;
 		this.surface = surface;
