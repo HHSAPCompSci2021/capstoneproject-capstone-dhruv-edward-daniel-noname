@@ -3,10 +3,11 @@ package screens;
 
 import java.awt.Point;
 import processing.core.PImage;
-
-
+import sprites.Map;
+import utils.Vague;
 import core.DrawingSurface;
-import dsharma578.shapes.*;
+//import dsharma578.shapes.*;
+import java.awt.Rectangle;
 
 
 public class StartScreen extends Screen {
@@ -21,12 +22,15 @@ public class StartScreen extends Screen {
 		super(400,800);
 		this.surface = surface;
 		button = new Rectangle(surface.width/2-100,500,200,100);
-		button.setFillColor(250, 250, 255, 255);
+
+		//Map2 temp = new Map2(surface);
+		//Vague.print2dIntArray(temp.grid);
+
+//		button.(250, 250, 255, 255);
 	}
 
 	public void setup()
 	{	
-		System.out.println("IN");
 		background = surface.loadImage("images"+fileSeparator+"menubg.jpg");
 	}
 
@@ -36,18 +40,24 @@ public class StartScreen extends Screen {
 		//surface.background(background);
 		surface.image(background, 0, 0, 400, 800);
 	
-		button.draw(surface);
-		surface.fill(0);
-		String str = "Click me!";
+		String str = "Start Game!";
 		float w = surface.textWidth(str);
+		//surface.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
+		//surface.fill(0);
+		surface.textSize(32);
+		surface.fill(0, 408, 612);
+		surface.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
+	
 	}
 
 
 
 	public void mousePressed() 
 	{
-		if (button.isPointInside(surface.mouseX,surface.mouseY))
-			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
+		Point p = new Point(surface.mouseX,surface.mouseY);
+		if (button.contains(p)){
+		 	surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
+		}
 	}
 	
 

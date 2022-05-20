@@ -23,6 +23,10 @@ public class Vague
         key  = newKey;
     }
 
+    public static int randomIntFromRange(int min, int max) {
+        return min + (int) (Math.random() * ((max - min)));
+    }
+
     public static char getKey()
     {
         char out = key;
@@ -39,20 +43,31 @@ public class Vague
             case 2:
                 surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
                 break;
-            case 3:
-                surface.switchScreen(ScreenSwitcher.GAME_LEVEL_1);
-                break;
-            case 4:
-                surface.switchScreen(ScreenSwitcher.GAME_LEVEL_2);
-                break;
-            case 5:
-                surface.switchScreen(ScreenSwitcher.GAME_LEVEL_3);
-                break;
-
             default:
                 break;
         }
 
     }
-    
+
+    public static void printIntArray(int[] a)
+    {
+        for(int i=0; i<a.length; i++)
+        {
+            System.out.print(a[i]+" ");
+        }
+        System.out.println("");
+    }
+
+    public static void print2dIntArray(int[][] a)
+    {
+        for(int i=0; i<a.length; i++)
+        {
+            printIntArray(a[i]);
+        }
+    }
+
+    public static void dT(int c)
+    {
+        System.out.println("@Debug "+c);
+    }
 }

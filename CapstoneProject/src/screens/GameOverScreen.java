@@ -1,43 +1,37 @@
 package screens;
 
 import core.DrawingSurface;
+import java.awt.Rectangle;
+
+import processing.core.PApplet;
 import processing.core.PImage;
-import core.DrawingSurface;
-import dsharma578.shapes.*;
+import sprites.Sprite;
 
 public class GameOverScreen extends Screen{
 	
-	private DrawingSurface surface;
-	private Rectangle button;
+	private PApplet surface;
 	private PImage background;
+	private Sprite ggs;
 	public final static String fileSeparator = System.getProperty("file.separator");
 
-	public GameOverScreen(DrawingSurface surface) {
+	
+
+	public GameOverScreen(PApplet surface) {
 		super(400, 800);
 		this.surface = surface;
-		button = new Rectangle(surface.width/2+50,500,200,100);
-		button.setFillColor(250, 250, 255, 255);
 	}
 	
 	public void setup() {
-		System.out.println("its in");
 		background=surface.loadImage("images" + fileSeparator + "GameOver.PNG");
+		ggs = new Sprite(background, 100, 200, 200, 100);
 	}
 	
 	
 	public void draw() 
 	{
-		surface.image(background, 0, 0, 400, 800);
-		button.draw(surface);
-		surface.fill(0);
-		String str = "Click me!";
-		float w = surface.textWidth(str);
+		surface.background(0);
+		ggs.draw(surface);
 	}
 	
-	public void mousePressed() 
-	{
-		if (button.isPointInside(surface.mouseX,surface.mouseY))
-			surface.switchScreen(ScreenSwitcher.START_SCREEN);
-	}
 
 }

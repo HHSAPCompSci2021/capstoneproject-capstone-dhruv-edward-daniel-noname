@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import processing.core.PImage;
+
 import java.util.Scanner;
+import dsharma578.shapes.Rectangle;
 import utils.Vague;
 
 import java.awt.geom.Rectangle2D;
@@ -42,6 +44,7 @@ public class Map{
 
 	public Map(String filename) 
     {
+        filename = "CapstoneProject\\maps\\map.txt";
 		y=0;
 		setDimensions(filename);
 

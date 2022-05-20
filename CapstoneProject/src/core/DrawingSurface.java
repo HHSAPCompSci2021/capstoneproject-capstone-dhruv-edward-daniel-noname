@@ -12,6 +12,9 @@ import java.awt.event.KeyEvent;
 
 import screens.ScreenSwitcher;
 import screens.Game;
+import screens.GameOverScreen;
+import screens.MenuScreen;
+import screens.RandomGame;
 import screens.StartScreen;
 import screens.GameOverScreen;
 import utils.Vague;
