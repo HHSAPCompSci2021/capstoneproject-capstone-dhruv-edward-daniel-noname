@@ -30,6 +30,8 @@ public class Map
         this.surface = surface;
         grid = new int[/*(surface.height/chunkSize + 1)*2*/100][cols];
         chunkSize = surface.width/grid[0].length;
+
+        Vague.chunkSize = chunkSize;
         
         this.generateInitialGrid();
 	}
@@ -61,7 +63,7 @@ public class Map
     {
         wall = wallBlocks;
     }
-    
+
     public int[] generateObstacle()
     {
         int size = Vague.randomIntFromRange(2, 5);

@@ -15,11 +15,12 @@ import processing.core.PImage;
 
 public class StarShip extends Sprite {
 
-	public static final int SHIP_WIDTH = 36;
-	public static final int SHIP_HEIGHT = 35;
+	public static final int SHIP_WIDTH = 36, SHIP_HEIGHT = 35;
 	private ArrayList<Bullet> bullets = new ArrayList<>();
+	private Sprite fires;
 	private PApplet surface;
-	private int health;
+	private PImage bulletImage;
+	private int health, ticks = 1000;
 	private double xVel;
 
 	public StarShip(PApplet surface, PImage starShip, int x) 
@@ -31,13 +32,22 @@ public class StarShip extends Sprite {
 	
 	}
 	
-	public void setup(PImage starShipIMG)
+	public void setup(PImage starShipIMG, PImage fire, PImage bullet)
 	{
 		changeImage(starShipIMG);
+		this.bulletImage = bullet;
+		fires = new Sprite(fire, 10, 10, 20, 20);
 	}
 	
 	public void draw() 
 	{
+		if(ticks>0 && ticks<(20))
+		{
+			fires.moveToLocation((double)super.getRX()+Vague.chunkSize/4-4, (double)super.getRY()-Vague.chunkSize/2);
+			fires.draw(surface);
+		}
+		ticks++;
+
 		super.draw(surface);
 
 		for(int i=0; i<bullets.size(); i++)
@@ -51,6 +61,7 @@ public class StarShip extends Sprite {
 		surface.rect(10, surface.height-12, 100, 5);
 		surface.fill(255,255,255);
 		surface.rect(10, surface.height-12, health, 5);
+
 	}
 
 	public boolean hitsWall(List<List<Sprite>> wallBlocks) 
@@ -74,9 +85,11 @@ public class StarShip extends Sprite {
 	
 	public void shoot() 
 	{
+		ticks = 0;
+		
 		if(bullets.size() < 2)
 		{
-			bullets.add(new Bullet(surface, super.getRX()+(int)(super.width/2), super.getRY(), 9));
+			bullets.add(new Bullet(surface, bulletImage, super.getRX()+(int)(15/2)+4 , super.getRY(), 9));
 		}
 	}
 	

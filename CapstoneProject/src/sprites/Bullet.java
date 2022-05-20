@@ -3,6 +3,7 @@ package sprites;
 import java.util.List;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Bullet extends Sprite
 {
@@ -15,6 +16,19 @@ public class Bullet extends Sprite
 		this.vel = vel;
         this.surface = surface;
     }
+
+	public Bullet(PApplet surface,PImage bulletImage, int x, int y, int vel)
+    {
+        super(bulletImage, x,y, 15, 20);
+		this.vel = vel;
+        this.surface = surface;
+    }
+
+
+	public void setup()
+	{
+		
+	}
 
     public boolean hitsWall(List<List<Sprite>> wallBlocks) 
 	{

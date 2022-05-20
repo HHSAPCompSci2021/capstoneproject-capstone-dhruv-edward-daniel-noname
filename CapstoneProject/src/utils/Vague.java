@@ -11,6 +11,7 @@ public class Vague
 {
     private static char key = '0';
     public static char[][] grid;
+    public static int chunkSize;
     public static Hashtable<String, Integer> db = new Hashtable<String, Integer>();
 
     public Vague()
