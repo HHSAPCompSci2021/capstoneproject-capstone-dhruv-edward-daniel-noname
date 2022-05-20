@@ -32,11 +32,12 @@ public class Game extends Screen {
 
 	public void setup()
 	{	
-		background = surface.loadImage("images"+fileSeparator+"menubg.jpg");
 		starShipIMG = surface.loadImage("images"+fileSeparator+"StarShip.png");
+		PImage fire = surface.loadImage("images"+fileSeparator+"fire_out.png");
+		PImage bullet = surface.loadImage("images"+fileSeparator+"bullet.png");
 		
 		map.setup(surface);
-		ship.setup(starShipIMG);
+		ship.setup(starShipIMG, fire, bullet);
 	}
 
 	public void draw() 

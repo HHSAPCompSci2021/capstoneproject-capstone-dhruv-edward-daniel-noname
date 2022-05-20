@@ -44,6 +44,7 @@ public class Map{
 
 	public Map(String filename) 
     {
+        filename = "CapstoneProject\\maps\\map.txt";
 		y=0;
 		setDimensions(filename);
 		grid = new char[mapLength][mapWidth];

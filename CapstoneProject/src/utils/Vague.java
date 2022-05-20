@@ -11,6 +11,7 @@ public class Vague
 {
     private static char key = '0';
     public static char[][] grid;
+    public static int chunkSize;
     public static Hashtable<String, Integer> db = new Hashtable<String, Integer>();
 
     public Vague()
@@ -41,7 +42,7 @@ public class Vague
                 surface.switchScreen(ScreenSwitcher.START_SCREEN);
                 break;
             case 2:
-                surface.switchScreen(ScreenSwitcher.GAME1_SCREEN);
+                surface.switchScreen(ScreenSwitcher.RANDOMGAME_SCREEN);
                 break;
             default:
                 break;

@@ -30,6 +30,8 @@ public class RandomMap
         this.surface = surface;
         grid = new int[/*(surface.height/chunkSize + 1)*2*/100][cols];
         chunkSize = surface.width/grid[0].length;
+
+        Vague.chunkSize = chunkSize;
         
         this.generateInitialGrid();
 	}
@@ -55,6 +57,11 @@ public class RandomMap
             }
 
         }
+    }
+
+    public void setWall(List<List<Sprite>> wallBlocks)
+    {
+        wall = wallBlocks;
     }
 
     public int[] generateObstacle()
@@ -210,10 +217,6 @@ public class RandomMap
 
     public int[][] getGrid() {
         return grid;
-    }
-    
-    public int getCurrentRow() {
-    	return currentRow;
     }
 
 	
