@@ -57,6 +57,11 @@ public class Map
         }
     }
 
+    public void setWall(List<List<Sprite>> wallBlocks)
+    {
+        wall = wallBlocks;
+    }
+    
     public int[] generateObstacle()
     {
         int size = Vague.randomIntFromRange(2, 5);

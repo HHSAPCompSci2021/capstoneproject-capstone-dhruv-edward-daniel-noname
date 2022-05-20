@@ -16,21 +16,29 @@ public class Bullet extends Sprite
         this.surface = surface;
     }
 
-    public void hitsWall(List<List<Sprite>> wallBlocks) 
+    public boolean hitsWall(List<List<Sprite>> wallBlocks) 
 	{
 
+		boolean intersects = false;
 		for(int i=0; i<wallBlocks.size(); i++)
 		{
 			for(int j=0; j<wallBlocks.get(0).size(); j++)
 			{
 				Sprite s = wallBlocks.get(i).get(j);
+
 				if( this.intersects(s) && s.getId() ==1 )
 				{
-					s = new Sprite(s.getRX(), s.getRY(), s.getRW(), s.getRW());
+					wallBlocks.get(i).remove(j);
+					wallBlocks.get(i).add(j, new Sprite(s.getRX(), s.getRY(), s.getRW(), s.getRW()));
+					wallBlocks.get(i).get(j).setFillColor(0, 0, 0, 255);
+
+					return true;
 				}
 
 			}
 		}
+
+		return false;
 	}
 
     public void eject(int velocity) 

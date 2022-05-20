@@ -45,8 +45,9 @@ public class Game extends Screen {
 		surface.rect(0, 0, 400, 800);
 		map.scroll(scrollSpeed);
 		
+		map.setWall(ship.bulletHitsWall(map.getWallRects()));
 		ship.hitsWall(map.getWallRects());
-		
+
 		char pressedKey = Vague.getKey();
 		if(pressedKey == 'a' && ship.x-(surface.width/(map.getGrid()[0].length))>=-10)
 			ship.walk(-1, surface.width/(map.getGrid()[0].length));

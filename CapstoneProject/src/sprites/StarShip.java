@@ -74,7 +74,10 @@ public class StarShip extends Sprite {
 	
 	public void shoot() 
 	{
-		bullets.add(new Bullet(surface, super.getRX()+(int)(super.width/2), super.getRY(), 9));
+		if(bullets.size() < 2)
+		{
+			bullets.add(new Bullet(surface, super.getRX()+(int)(super.width/2), super.getRY(), 9));
+		}
 	}
 	
 	public ArrayList<Bullet> getBullets()
@@ -86,7 +89,20 @@ public class StarShip extends Sprite {
 		return health;
 	}
 
+	public List<List<Sprite>> bulletHitsWall(List<List<Sprite>> walls)
+	{
 
+		for(int i=0; i<bullets.size(); i++)
+		{
+			if(bullets.get(i).hitsWall(walls))
+			{
+				bullets.remove(i);
+				i--;
+			}
+		}
+
+		return walls;
+	}
 	public void walk(int dir, int amount) 
 	{
 		super.moveByAmount(dir*amount, 0);
