@@ -25,9 +25,8 @@ public class Game extends Screen {
 		super(surface.width, surface.height);
 		y=0;
 		this.surface = surface;
-		map = new Map("maps"+fileSeparator+ gameMap);
 		ship = new StarShip(surface, starShipIMG,surface.width/2-20);
-		map = new Map("maps"+fileSeparator+gameMap);
+		map = new Map("maps"+fileSeparator + gameMap);
 		scrollSpeed = speed;
 	}
 
