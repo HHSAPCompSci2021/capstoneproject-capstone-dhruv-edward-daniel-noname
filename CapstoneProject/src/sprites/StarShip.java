@@ -29,7 +29,7 @@ public class StarShip extends Sprite {
 		super(starShip, x, 700, SHIP_WIDTH, SHIP_HEIGHT);
 		this.surface =  surface;
 		health = 100;
-		energy = 1500;
+		energy = 900;
 	}
 
 	
@@ -61,9 +61,10 @@ public class StarShip extends Sprite {
 		surface.rect(0, surface.height-20, surface.width, 20);
 		surface.rect(10, surface.height-12, 100, 5);
 		surface.stroke(255);
-		surface.fill(255,255,255);
+		surface.fill(255);
 		surface.rect(10, surface.height-12, health, 5);
-		energy++;
+		if(energy<900) {energy++;}
+		
 	}
 
 	public boolean hitsWall(List<List<Sprite>> wallBlocks) 
@@ -89,10 +90,10 @@ public class StarShip extends Sprite {
 	{
 		ticks = 0;
 		
-		if(bullets.size() < 2 && energy>=500)
+		if(bullets.size() < 2 && energy>=300)
 		{
 			bullets.add(new Bullet(surface, bulletImage, super.getRX()+(int)(15/2)+4 , super.getRY(), 9));
-			energy-=50;
+			energy-=300;
 		}
 	}
 	
@@ -126,6 +127,9 @@ public class StarShip extends Sprite {
 
 	public void resetHealth() {
 		health = 100;
+	}
+	public int getEnergy() {
+		return energy;
 	}
 
 }

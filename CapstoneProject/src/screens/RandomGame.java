@@ -117,6 +117,12 @@ public class RandomGame extends Screen {
 		
 		map.draw();
 		ship.draw();
+		surface.fill(100,200,100);
+		surface.rect(surface.width/2, surface.height-12, ship.getEnergy()/10, 5);
+		surface.noFill();
+		surface.rect(surface.width/2, surface.height-12, 30, 5);
+		surface.rect(surface.width/2+30, surface.height-12, 30, 5);
+		surface.rect(surface.width/2+60, surface.height-12, 30, 5);
 		ifZero();
 	}
 
