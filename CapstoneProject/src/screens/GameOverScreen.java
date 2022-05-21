@@ -2,11 +2,10 @@ package screens;
 
 import core.DrawingSurface;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import javax.management.relation.RelationTypeSupport;
-
+import dsharma578.shapes.Rectangle;
 import processing.core.PApplet;
 import processing.core.PImage;
 import sprites.Sprite;
