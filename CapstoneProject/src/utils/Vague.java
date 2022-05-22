@@ -13,7 +13,6 @@ public class Vague
     public static char[][] grid;
     public static int chunkSize;
     public static Hashtable<String, Integer> db = new Hashtable<String, Integer>();
-	public static int chunkSize;
 
 	public static final int STANDARD_WALL = 1;
 	public static final int COIN_GOLD = 2;

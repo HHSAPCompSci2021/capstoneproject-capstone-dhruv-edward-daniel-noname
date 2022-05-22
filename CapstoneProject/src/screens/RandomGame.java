@@ -28,7 +28,7 @@ public class RandomGame extends Screen {
 		super(surface.width, surface.height);
 		y=0;
 		this.surface = surface;
-		ship = new StarShip(surface, starShipIMG,surface.width/2-20);
+		ship = new StarShip(surface, surface.width/2-20);
 		map = new RandomMap(surface);
 		scrollSpeed = speed;
 	}
@@ -89,7 +89,7 @@ public class RandomGame extends Screen {
 		PImage bullet = surface.loadImage("images"+fileSeparator+"bullet.png");
 		
 		map.setup();
-		ship.setup(starShipIMG, fire, bullet);
+		ship.setup();
 	}
 
 	public void draw() 
@@ -103,7 +103,7 @@ public class RandomGame extends Screen {
 		map.scroll(scrollSpeed);
 		
 		map.setWall(ship.bulletHitsWall(map.getWallRects()));
-		ship.hitsWall(map.getWallRects());
+		ship.hits(map.getWallRects());
 
 		char pressedKey = Vague.getKey();
 		if(pressedKey == 'a' && ship.x-(surface.width/(map.getGrid()[0].length))>=-10)
@@ -118,7 +118,7 @@ public class RandomGame extends Screen {
 		map.draw();
 		ship.draw();
 		surface.fill(100,200,100);
-		surface.rect(surface.width/2, surface.height-12, ship.getEnergy()/10, 5);
+		//surface.rect(surface.width/2, surface.height-12, ship.getEnergy()/10, 5);
 		surface.noFill();
 		surface.rect(surface.width/2, surface.height-12, 30, 5);
 		surface.rect(surface.width/2+30, surface.height-12, 30, 5);

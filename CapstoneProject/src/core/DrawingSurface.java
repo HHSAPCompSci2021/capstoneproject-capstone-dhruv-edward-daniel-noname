@@ -27,19 +27,17 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
 {    
     private Screen active;
     private ArrayList<Screen> screens;
-    private ArrayList<Integer> keys;
     private Map<Character, Record> map = new HashMap<Character, Record>();
 	public final static String fileSeparator = System.getProperty("file.separator");
 
     public DrawingSurface()
     {	setSize(400,800);
-        keys = new ArrayList<Integer>();
         screens = new ArrayList<Screen>();
         screens.add(new StartScreen(this));
         screens.add(new MenuScreen(this));
-        screens.add(new Game(this, 5, "map.txt"));
-        screens.add(new Game(this,  7, "map2.txt"));
-        screens.add(new Game(this, 3, "map3.txt"));
+        screens.add(new Game(this, 5));
+        screens.add(new Game(this,  7));
+        screens.add(new Game(this, 3));
         screens.add(new RandomGame(this, 6));
         screens.add(new GameOverScreen(this));
         // screens.add(new GameL1(this, 6, "map.txt"));
@@ -93,17 +91,17 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
 	}
 
 	
-	public void mouseMoved() {
-		active.mouseMoved();
-	}
-	
-	public void mouseDragged() {
-		active.mouseDragged();
-	}
-	
-	public void mouseReleased() {
-		active.mouseReleased();
-	}
+//	public void mouseMoved() {
+//		active.mouseMoved();
+//	}
+//	
+//	public void mouseDragged() {
+//		active.mouseDragged();
+//	}
+//	
+//	public void mouseReleased() {
+//		active.mouseReleased();
+//	}
 
 	// public void keyPressed() {
 	// 	keys.add(keyCode);
