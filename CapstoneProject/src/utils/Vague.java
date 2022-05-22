@@ -1,7 +1,7 @@
 package utils;
 
 import processing.core.PApplet;
-
+import processing.core.PImage;
 import screens.ScreenSwitcher;
 import core.DrawingSurface;
 import java.util.*;
@@ -13,6 +13,21 @@ public class Vague
     public static char[][] grid;
     public static int chunkSize;
     public static Hashtable<String, Integer> db = new Hashtable<String, Integer>();
+
+	public static final int STANDARD_WALL = 1;
+	public static final int COIN_GOLD = 2;
+    public static final int AMMO_CRATE = 3;
+	public static final int HEALTH_PACKAGE = 4;
+	public static final int BLACK_HOLE = 5;
+
+    public static boolean IN_BLACK_HOLE = false;
+
+    public static PImage destroyed;
+    public static PImage barrier;
+    public static PImage ammocrate;
+    public static PImage healthpackage;
+    public static PImage starShip, blackhole;
+    public static PImage fire, bullet;
 
     public Vague()
     {

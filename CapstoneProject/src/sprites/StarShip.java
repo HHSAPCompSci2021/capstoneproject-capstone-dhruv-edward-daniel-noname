@@ -4,6 +4,7 @@ import java.util.List;
 import core.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
+import utils.UserData;
 import utils.Vague;
 
 import java.util.ArrayList;
@@ -18,32 +19,31 @@ public class StarShip extends Sprite {
 	public static final int SHIP_WIDTH = 36, SHIP_HEIGHT = 35;
 	private ArrayList<Bullet> bullets = new ArrayList<>();
 	private Sprite fires;
+	private int ammo = 23;
 	private PApplet surface;
-	private PImage bulletImage;
 	private int health, ticks = 1000;
-	private double xVel;
+	public final static String fileSeparator = System.getProperty("file.separator");
 
-	public StarShip(PApplet surface, PImage starShip, int x) 
+
+	public StarShip(PApplet surface, int x) 
 	{
-		super(starShip, x, 700, SHIP_WIDTH, SHIP_HEIGHT);
+		super(Vague.starShip, x, 700, SHIP_WIDTH, SHIP_HEIGHT*2);
 		this.surface =  surface;
-		xVel = 0;
 		health = 100;
 	
 	}
 	
-	public void setup(PImage starShipIMG, PImage fire, PImage bullet)
+	public void setup()
 	{
-		changeImage(starShipIMG);
-		this.bulletImage = bullet;
-		fires = new Sprite(fire, 10, 10, 20, 20);
+		changeImage(Vague.starShip);
+		fires = new Sprite(Vague.fire, 10, 10, 20, 20);
 	}
 	
 	public void draw() 
 	{
 		if(ticks>0 && ticks<(20))
 		{
-			fires.moveToLocation((double)super.getRX()+Vague.chunkSize/4-4, (double)super.getRY()-Vague.chunkSize/2);
+			fires.moveToLocation((double)super.getRX()+Vague.chunkSize/4-7, (double)super.getRY()-Vague.chunkSize/2);
 			fires.draw(surface);
 		}
 		ticks++;
@@ -62,23 +62,81 @@ public class StarShip extends Sprite {
 		surface.fill(255,255,255);
 		surface.rect(10, surface.height-12, health, 5);
 
+		surface.textSize(14);
+		surface.stroke(204, 102, 0);
+		surface.text("ammo: "+String.valueOf(ammo), surface.width-75, surface.height-7);
+
+		surface.textSize(14);
+		surface.stroke(204, 102, 0);
+		surface.text("Δx: "+String.valueOf(UserData.distanceTraveled), surface.width-150, surface.height-7);
+
+		surface.textSize(14);
+		surface.stroke(204, 102, 0);
+		surface.text("$$: "+String.valueOf(UserData.coinsCollected*5*1000+UserData.distanceTraveled/100), surface.width-230, surface.height-7);
+
+
 	}
 
-	public boolean hitsWall(List<List<Sprite>> wallBlocks) 
+	public boolean hits(List<List<Sprite>> wallBlocks) 
 	{
 
 		for(List<Sprite> ls : wallBlocks) 
 		{
- 			for(Sprite s : ls)
+			for(int i=0; i<wallBlocks.size(); i++)
 			{
-				if(this.intersects(s) && (s.getId() == 1))
+				for(int j=0; j<wallBlocks.get(0).size(); j++)
 				{
-					health--;
-					return true;
-				}
+					Sprite s = wallBlocks.get(i).get(j);
 
+					if(this.intersects(s))
+					{
+						switch(s.getId())
+						{
+							case(Vague.COIN_GOLD):
+								UserData.coinsCollected++;
+								wallBlocks.get(i).remove(j);
+								wallBlocks.get(i).add(j, new Sprite(s.getRX(), s.getRY(), s.getRW(), s.getRW()));
+								wallBlocks.get(i).get(j).setFillColor(0, 0, 0, 255);
+								break;
+							case(Vague.STANDARD_WALL):
+								health --;
+								break;
+
+							case(Vague.AMMO_CRATE):
+								this.ammo+=15;
+								wallBlocks.get(i).remove(j);
+								wallBlocks.get(i).add(j, new Sprite(s.getRX(), s.getRY(), s.getRW(), s.getRW()));
+								wallBlocks.get(i).get(j).setFillColor(0, 0, 0, 255);
+								break;
+
+							case(Vague.HEALTH_PACKAGE):
+								if(this.health <50)
+									this.health = 70;
+								else
+									this.health = 100;
+
+
+								wallBlocks.get(i).remove(j);
+								wallBlocks.get(i).add(j, new Sprite(s.getRX(), s.getRY(), s.getRW(), s.getRW()));
+								wallBlocks.get(i).get(j).setFillColor(0, 0, 0, 255);
+								break;
+							
+							case(Vague.BLACK_HOLE):
+								Vague.IN_BLACK_HOLE = true;
+								break;
+
+
+						}
+
+
+						return true;
+					}
+
+	
+				}
 			}
 		}
+			
 
 		return false;
 	}
@@ -86,10 +144,12 @@ public class StarShip extends Sprite {
 	public void shoot() 
 	{
 		ticks = 0;
+		if(ammo>0)
+			ammo --; 
 		
-		if(bullets.size() < 2)
+		if(bullets.size() < 2 && ammo > 0)
 		{
-			bullets.add(new Bullet(surface, bulletImage, super.getRX()+(int)(15/2)+4 , super.getRY(), 9));
+			bullets.add(new Bullet(surface, super.getRX()+(int)(15/2)+4 , super.getRY(), 9));
 		}
 	}
 	

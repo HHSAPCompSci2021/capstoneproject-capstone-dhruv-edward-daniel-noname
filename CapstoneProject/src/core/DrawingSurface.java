@@ -44,6 +44,17 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
 
     public void setup()
     {
+        Vague.fire = loadImage("images"+fileSeparator+"fire_out.png");
+		Vague.starShip = loadImage("images"+fileSeparator+"daboi.png");
+		Vague.destroyed = loadImage("images"+fileSeparator+"exploded.png");
+        Vague.ammocrate = loadImage("images"+fileSeparator+"ammocrate.png");
+        Vague.healthpackage= loadImage("images"+fileSeparator+"ramen.png");
+        Vague.barrier = loadImage("images"+fileSeparator+"wallchunk.png");
+		Vague.bullet = loadImage("images"+fileSeparator+"bullet.png");
+        Vague.blackhole = loadImage("images"+fileSeparator+"blackhole.png");
+
+
+
         frameRate(60);
         for (Screen s : screens)
             s.setup();
