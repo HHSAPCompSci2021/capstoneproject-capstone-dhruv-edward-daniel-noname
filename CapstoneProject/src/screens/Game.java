@@ -22,8 +22,7 @@ public class Game extends Screen {
 	private DrawingSurface surface;
 	private StarShip ship;
 	private Map map;
-	private int y=0, scrollSpeed, currentFrame=0, numFrames = 47, blackhole_tick=0;
-	PImage[] background = new PImage[numFrames];
+	private int scrollSpeed, blackhole_tick=0;
 	//public final static String fileSeparator = System.getProperty("file.separator");
 
 	public Game(DrawingSurface surface, int speed) {
@@ -32,8 +31,6 @@ public class Game extends Screen {
 
 		ship = new StarShip(surface ,surface.width/2-20);
 		map = new Map(surface);
-		System.out.println(""+DrawingSurface.fileSeparator);
-
 		scrollSpeed = speed;
 	}
 
@@ -99,7 +96,6 @@ public class Game extends Screen {
 	}
 
 	public void reset() {
-		y=0;
 		ship.resetHealth();
 		ship.x=175;
 	}

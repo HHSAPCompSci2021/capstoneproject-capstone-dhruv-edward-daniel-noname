@@ -15,7 +15,6 @@ public class StartScreen extends Screen {
 	private DrawingSurface surface;
 	private PImage background;
 	private Rectangle button;
-	private int y;
 	public final static String fileSeparator = System.getProperty("file.separator");
 	
 	public StartScreen(DrawingSurface surface) {

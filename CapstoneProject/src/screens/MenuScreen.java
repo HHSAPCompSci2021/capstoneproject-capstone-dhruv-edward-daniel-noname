@@ -12,7 +12,7 @@ import processing.core.PShapeSVG.Gradient;
 
 public class MenuScreen extends Screen{
 	private DrawingSurface surface;
-	ArrayList<Rectangle> rects = new ArrayList<Rectangle>();
+	private ArrayList<Rectangle> rects = new ArrayList<Rectangle>();
 
     public MenuScreen(DrawingSurface surface) {
 		super(400, 800);

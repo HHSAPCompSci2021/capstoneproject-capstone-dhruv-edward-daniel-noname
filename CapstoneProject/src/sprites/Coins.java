@@ -10,12 +10,6 @@ public class Coins extends Sprite
     private PImage[] coinImages;
     private int value = 5, adj = 0;
 
-    public Coins(PApplet surface, PImage coinImage,int x, int y, int value)
-    {
-        super(coinImage, x+5,y+5, Vague.chunkSize-5,Vague.chunkSize-5, 2);
-        this.surface = surface;
-        this.value = value;
-    }
 
     public Coins(PApplet surface, PImage[] coinImages,int x, int y, int value)
     {
@@ -23,13 +17,6 @@ public class Coins extends Sprite
         this.coinImages = coinImages;
         this.surface = surface;
         this.value = value;
-    }
-
-
-    public Coins(PApplet surface, PImage coinImage, int x, int y)
-    {
-        super(coinImage, x+5,y+5,Vague.chunkSize-5,Vague.chunkSize-5);
-        this.surface = surface;
     }
     
     public void draw()

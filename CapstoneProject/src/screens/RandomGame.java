@@ -18,18 +18,15 @@ public class RandomGame extends Screen {
 
 	private DrawingSurface surface;
 	private StarShip ship;
-	private RandomMap map;
-	private PImage starShipIMG;
-	private int y, scrollSpeed, currentFrame=0, numFrames = 47;
-	PImage[] background = new PImage[numFrames];
+	private Map map;
+	private int scrollSpeed;
 	public final static String fileSeparator = System.getProperty("file.separator");
 
 	public RandomGame(DrawingSurface surface, int speed) {
 		super(surface.width, surface.height);
-		y=0;
 		this.surface = surface;
 		ship = new StarShip(surface, surface.width/2-20);
-		map = new RandomMap(surface);
+		map = new Map(surface);
 		scrollSpeed = speed;
 	}
 
@@ -84,7 +81,6 @@ public class RandomGame extends Screen {
 		// background[46] =surface.loadImage("images"+fileSeparator+"bg"+fileSeparator+"frame_46_delay-0.04s.gif"); 
 
 
-		starShipIMG = surface.loadImage("images"+fileSeparator+"StarShip.png");
 		PImage fire = surface.loadImage("images"+fileSeparator+"fire_out.png");
 		PImage bullet = surface.loadImage("images"+fileSeparator+"bullet.png");
 		
@@ -134,7 +130,6 @@ public class RandomGame extends Screen {
 	}
 
 	public void reset() {
-		y=0;
 		ship.resetHealth();
 		ship.x=175;
 	}

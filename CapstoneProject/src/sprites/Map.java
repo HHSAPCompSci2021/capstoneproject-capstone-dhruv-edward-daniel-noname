@@ -9,7 +9,6 @@ import processing.core.PImage;
 import screens.Screen;
 
 import java.util.Scanner;
-
 import utils.UserData;
 import utils.Vague;
 
@@ -27,8 +26,7 @@ public class Map
 
     
 	public Map(PApplet surface) 
-    {
-
+    {	
         this.surface = surface;
         grid = new int[/*(surface.height/chunkSize + 1)*2*/100][11];
 
