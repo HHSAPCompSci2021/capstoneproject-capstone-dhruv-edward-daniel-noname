@@ -43,7 +43,7 @@ public class StarShip extends Sprite {
 	{
 		if(ticks>0 && ticks<(20))
 		{
-			fires.moveToLocation((double)super.getRX()+Vague.chunkSize/4-7, (double)super.getRY()-Vague.chunkSize/2);
+			fires.moveToLocation((double)super.getRX()+Vague.chunkSize/6, (double)super.getRY()-Vague.chunkSize/2);
 			fires.draw(surface);
 		}
 		ticks++;

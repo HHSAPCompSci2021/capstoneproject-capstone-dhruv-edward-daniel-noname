@@ -20,12 +20,6 @@ public class StartScreen extends Screen {
 	public StartScreen(DrawingSurface surface) {
 		super(400,800);
 		this.surface = surface;
-		button = new Rectangle(surface.width/2-100,500,200,100);
-
-		//Map2 temp = new Map2(surface);
-		//Vague.print2dIntArray(temp.grid);
-
-//		button.(250, 250, 255, 255);
 	}
 
 	public void setup()
@@ -35,17 +29,13 @@ public class StartScreen extends Screen {
 
 	public void draw() 
 	{
-
-		//surface.background(background);
-		surface.image(background, 0, 0, 400, 800);
-	
+		button = new Rectangle(surface.width/4, (int)(surface.height*0.675), surface.width/2, surface.height/8);
+		surface.image(background, 0, 0, surface.width, surface.height);
+		surface.fill(150);
 		String str = "Start Game!";
-		float w = surface.textWidth(str);
-		//surface.rect(button.x, button.y, button.width, button.height, 10, 10, 10, 10);
-		//surface.fill(0);
 		surface.textSize(32);
 		surface.fill(0, 408, 612);
-		surface.text(str, button.x+button.width/2-w/2, button.y+button.height/2);
+		surface.text(str, surface.width/2, (float)(surface.height*0.75));
 	
 	}
 
