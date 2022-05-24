@@ -1,7 +1,6 @@
 package sprites;
 
 import processing.core.PApplet;
-import processing.core.PImage;
 import utils.Vague;
 
 public class AmmoCrate extends Sprite

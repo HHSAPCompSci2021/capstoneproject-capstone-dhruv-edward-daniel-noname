@@ -1,13 +1,10 @@
 package core;
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import jay.jaysound.JayLayer;
 import processing.core.PApplet;
-import java.awt.event.KeyEvent;
 
 
 import screens.ScreenSwitcher;
@@ -16,9 +13,7 @@ import screens.GameOverScreen;
 import screens.MenuScreen;
 import screens.RandomGame;
 import screens.StartScreen;
-import screens.GameOverScreen;
 import utils.Vague;
-import screens.MenuScreen;
 
 import screens.Screen;
 
@@ -40,17 +35,6 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
         screens.add(new Game(this, 3, "map3.txt"));
         screens.add(new RandomGame(this, 6));
         screens.add(new GameOverScreen(this));
-        // screens.add(new GameL1(this, 6, "map.txt"));
-        // screens.add(new GameL1(this, 7, "map2.txt"));
-        
-//        JayLayer sound = new JayLayer("audio"+fileSeparator, "audio"+fileSeparator, false);
-//        String[] soundEffects = new String[] {"Miami Disco.mp3"};
-//		String[] songs = new String[] {"Miami Disco.mp3"};
-//        sound.addPlayList();
-//        sound.addSongs(0, songs);
-//        sound.addSoundEffects(soundEffects);
-//        sound.changePlayList(0);
-//        sound.nextSong();
         
         active = screens.get(0);
 
@@ -91,34 +75,7 @@ public class DrawingSurface extends PApplet implements ScreenSwitcher
 	}
 
 	
-//	public void mouseMoved() {
-//		active.mouseMoved();
-//	}
-//	
-//	public void mouseDragged() {
-//		active.mouseDragged();
-//	}
-//	
-//	public void mouseReleased() {
-//		active.mouseReleased();
-//	}
 
-	// public void keyPressed() {
-	// 	keys.add(keyCode);
-	// 	if (key == ESC)  // This prevents a processing program from closing on escape key
-	// 		key = 0;
-	// }
-
-	// public void keyReleased() 
-    // {
-	// 	while(keys.contains(keyCode))
-	// 		keys.remove(new Integer(keyCode));
-	// }
-
-	// public boolean isPressed(Integer code) {
-	// 	return keys.contains(code);
-	// }
-	
 
     @Override
     public void switchScreen(int i) {

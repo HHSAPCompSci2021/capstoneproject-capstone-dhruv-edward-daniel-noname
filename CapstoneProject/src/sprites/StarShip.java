@@ -2,17 +2,11 @@ package sprites;
 import java.util.List;
 
 import core.DrawingSurface;
-import processing.core.PApplet;
-import processing.core.PImage;
 import screens.ScreenSwitcher;
 import utils.UserData;
 import utils.Vague;
 
 import java.util.ArrayList;
-
-import java.awt.Point;
-import processing.core.PImage;
-
 
 
 public class StarShip extends Sprite {

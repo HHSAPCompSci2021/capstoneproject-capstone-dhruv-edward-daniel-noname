@@ -1,18 +1,9 @@
 package screens;
-import java.awt.Point;
-import java.awt.Rectangle;
 import processing.core.PImage;
-//import processing.event.KeyEvent;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-
-import sprites.Map;
 import sprites.RandomMap;
 import sprites.StarShip;
 import utils.Vague;
 import core.DrawingSurface;
-import jay.jaysound.JayLayer;
-
 
 public class RandomGame extends Screen {
 

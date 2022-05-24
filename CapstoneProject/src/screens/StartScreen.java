@@ -3,8 +3,6 @@ package screens;
 
 import java.awt.Point;
 import processing.core.PImage;
-import sprites.Map;
-import utils.Vague;
 import core.DrawingSurface;
 //import dsharma578.shapes.*;
 import java.awt.Rectangle;

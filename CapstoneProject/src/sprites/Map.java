@@ -14,7 +14,6 @@ import screens.Screen;
 import java.util.Scanner;
 
 import core.DrawingSurface;
-import utils.UserData;
 import utils.Vague;
 
 import processing.core.PApplet;

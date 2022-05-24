@@ -1,46 +1,30 @@
 package screens;
-import java.awt.Point;
-import java.awt.Rectangle;
 import processing.core.PImage;
-//import processing.event.KeyEvent;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-
-import javax.swing.text.TabableView;
-
 import sprites.Map;
-import sprites.Sprite;
 import sprites.StarShip;
-import utils.UserData;
 import utils.Vague;
 import core.DrawingSurface;
-import jay.jaysound.JayLayer;
 
 
 public class Game extends Screen {
 
 	private DrawingSurface surface;
-	private PImage background, starShipIMG;
+	private PImage starShipIMG;
 	private StarShip ship;
 	private Map map;
-	private int y, scrollSpeed;
-	public final static String fileSeparator = System.getProperty("file.separator");
+	private int scrollSpeed;
 
 	public Game(DrawingSurface surface, int speed, String gameMap) {
 		super(surface.width, surface.height);
-		y=0;
 		this.surface = surface;
 		ship = new StarShip(surface,surface.width/2-20);
-		map = new Map("maps"+fileSeparator+gameMap);
+		map = new Map("maps"+DrawingSurface.fileSeparator+gameMap);
 		scrollSpeed = speed;
 	}
 
 	public void setup()
 	{	
-		starShipIMG = surface.loadImage("images"+fileSeparator+"StarShip.png");
-		PImage fire = surface.loadImage("images"+fileSeparator+"fire_out.png");
-		PImage bullet = surface.loadImage("images"+fileSeparator+"bullet.png");
-		
+		starShipIMG = surface.loadImage("images"+DrawingSurface.fileSeparator+"StarShip.png");
 		map.setup(surface);
 		ship.setup();
 	}
@@ -74,12 +58,11 @@ public class Game extends Screen {
 	public void ifZero() {
 		if(ship.getHealth()<0) {
 			reset();
-			surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
+			surface.switchScreen(ScreenSwitcher.GAMEOVER_SCREEN);
 		}
 	}
 
 	public void reset() {
-		y=0;
 		ship.resetHealth();
 		ship.x=175;
 	}

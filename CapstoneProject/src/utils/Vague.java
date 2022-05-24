@@ -1,6 +1,5 @@
 package utils;
 
-import processing.core.PApplet;
 import processing.core.PImage;
 import screens.ScreenSwitcher;
 import core.DrawingSurface;

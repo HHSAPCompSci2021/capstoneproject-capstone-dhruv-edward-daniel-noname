@@ -1,15 +1,8 @@
 package screens;
 
 import core.DrawingSurface;
-import java.awt.Point;
 import java.util.ArrayList;
-
-import utils.Vague;
 import dsharma578.shapes.Rectangle;
-
-import processing.core.PApplet;
-import processing.core.PImage;
-import processing.core.PShapeSVG.Gradient;
 
 public class MenuScreen extends Screen{
 	private DrawingSurface surface;

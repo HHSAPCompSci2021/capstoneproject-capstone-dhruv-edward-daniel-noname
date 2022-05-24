@@ -1,19 +1,14 @@
 package screens;
 
-import core.DrawingSurface;
-import java.awt.Rectangle;
-
 import processing.core.PApplet;
 import processing.core.PImage;
 import sprites.Sprite;
-import utils.UserData;
 
 public class GameOverScreen extends Screen{
 	
 	private PApplet surface;
 	private PImage background;
 	private Sprite ggs;
-	private int T = 0;
 
 	public final static String fileSeparator = System.getProperty("file.separator");
 

@@ -1,14 +1,11 @@
 package sprites;
 
 
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
 import processing.core.PImage;
-import screens.Screen;
 
-import java.util.Scanner;
 import utils.Vague;
 
 import processing.core.PApplet;
