@@ -52,18 +52,12 @@ public class StarShip extends Sprite {
 			if(bullets.get(i).getCenterY() < 0)
 				bullets.remove(i);
 
-		surface.rect(0, surface.height-20, surface.width, 20);
-		surface.rect(10, surface.height-12, 100, 5);
 		surface.fill(255,255,255);
 		surface.rect(10, surface.height-12, health, 5);
 
 		surface.textSize(14);
 		surface.stroke(204, 102, 0);
 		surface.text("ammo: "+String.valueOf(ammo), surface.width-75, surface.height-7);
-
-		surface.textSize(14);
-		surface.stroke(204, 102, 0);
-		surface.text("Δx: "+String.valueOf(UserData.distanceTraveled), surface.width-150, surface.height-7);
 
 		surface.textSize(14);
 		surface.stroke(204, 102, 0);
