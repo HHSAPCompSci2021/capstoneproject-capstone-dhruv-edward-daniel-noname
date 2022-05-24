@@ -8,11 +8,16 @@ import screens.Screen;
 
 import java.util.Scanner;
 
+import core.DrawingSurface;
 import utils.UserData;
 import utils.Vague;
 
 import processing.core.PApplet;
 
+/**
+ * Represents a map that is infinite and randomly generated
+ *
+ */
 public class RandomMap
 {
 	private int[][] grid;
@@ -20,11 +25,13 @@ public class RandomMap
     private PImage goldCoin;
     private List<List<Sprite>> wall = new ArrayList<List<Sprite>>();
 
-    private PApplet surface;
-	public final static String fileSeparator = System.getProperty("file.separator");
+    private DrawingSurface surface;
 
-    
-	public RandomMap(PApplet surface) 
+    /**
+     * Creates a new randomly generated map on the DrawingSurface given
+     * @param surface the DrawingSurface upon which the infinite random map will be generated
+     */
+	public RandomMap(DrawingSurface surface) 
     {
 
         this.surface = surface;
@@ -37,7 +44,9 @@ public class RandomMap
         this.generateInitialGrid();
 	}
 
-	
+	/**
+	 * Creates an initial grid layout that the player will begin at
+	 */
     public void generateInitialGrid()
     {
 
@@ -73,11 +82,19 @@ public class RandomMap
 
     }
 
+    /**
+     * Sets the defined wallChunks of this map to the same as those specified in wallBlocks
+     * @param wallBlocks the List containing the WallBlocks that will be copied to this map
+     */
     public void setWall(List<List<Sprite>> wallBlocks)
     {
         wall = wallBlocks;
     }
 
+    /**
+     * Generates an obstacle between 1 and 5 blocks in length
+     * @return 
+     */
     public int[] generateObstacle()
     {
         int size = Vague.randomIntFromRange(2, 5);
@@ -101,13 +118,20 @@ public class RandomMap
 
     }
 
+    /**
+     * initializes the Sprites of this map and the Coin's image
+     */
     public void setup()
     {
-        goldCoin = surface.loadImage("images"+fileSeparator+"coins-images"+fileSeparator+"Gold"+fileSeparator+"gold_coin_hexagon_1.png");
+        goldCoin = surface.loadImage("images"+DrawingSurface.fileSeparator+"coins-images"+DrawingSurface.fileSeparator+"Gold"+DrawingSurface.fileSeparator+"gold_coin_hexagon_1.png");
 
         makeSprites();
     }
 
+    /**
+     * Scrolls the entire map downwards at the specified speed and adds more rows of map accordingly
+     * @param scrollSpeed the speed, in pixels per frame, that the map will scroll down at
+     */
     public void scroll(int scrollSpeed)
     {
         scrollDistance += scrollSpeed;
@@ -128,6 +152,9 @@ public class RandomMap
         }
     }
 
+    /**
+     * Adds a new row to the Random Map containing a random mix of obstacles, coins, and other pickups based on probabilities
+     */
     public void addNewRow()
     {
         wall.add(new ArrayList<Sprite>());
@@ -183,9 +210,9 @@ public class RandomMap
                 case Vague.HEALTH_PACKAGE:
                     wall.get(i+1).add(new HealthPackage(surface, chunkSize*j, wall.get(i).get(0).getRY()-chunkSize));
                     break;
-                case Vague.BLACK_HOLE:
-                    wall.get(i+1).add(new BlackHole(surface, chunkSize*j, wall.get(i).get(0).getRY()-chunkSize));
-                    break;
+//                case Vague.BLACK_HOLE:
+//                    wall.get(i+1).add(new BlackHole(surface, chunkSize*j, wall.get(i).get(0).getRY()-chunkSize));
+//                    break;
                 default:
                     wall.get(i+1).add(new Sprite(chunkSize*j, wall.get(i).get(0).getRY()-chunkSize, chunkSize, chunkSize));
                     wall.get(i+1).get(j).setFillColor(0, 0, 0, 255);
@@ -194,8 +221,10 @@ public class RandomMap
         wall.remove(0);
     }
 
-
-
+	
+	/**
+	 * Initializes Sprites with the correct images and positions and adds them to a List of Sprites that represents the Random Map
+	 */
     public void makeSprites()
     {
         int width = chunkSize;
@@ -228,7 +257,10 @@ public class RandomMap
             }
         }
     }
-
+    
+    /**
+     * Draws the Random Map onto the PApplet
+     */
     public void draw()
     {
         surface.fill(255);
@@ -241,13 +273,19 @@ public class RandomMap
             }
         }
     }
-
-
+	
+	/**
+	 * Returns a List of Sprites containing the Sprites that comprise the grid
+	 * @return
+	 */
     public List<List<Sprite>> getWallRects() {
         return wall;
     }
 
-
+    /**
+     * Returns a 2D character array representing the Random Map grid
+     * @return a 2D character array representing the Random Map grid
+     */
     public int[][] getGrid() {
         return grid;
     }

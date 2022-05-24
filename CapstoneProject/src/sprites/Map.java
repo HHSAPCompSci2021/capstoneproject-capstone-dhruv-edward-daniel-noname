@@ -17,7 +17,9 @@ import core.DrawingSurface;
 import utils.Vague;
 
 import processing.core.PApplet;
-
+/**
+ * Represents the map that contains level data for the premade level Games
+ */
 public class Map
 {
 	private char[][] grid;
@@ -25,6 +27,10 @@ public class Map
     private PImage wallChunk, clearLine;
     private List<List<Sprite>> wall = new ArrayList<List<Sprite>>();
 
+    /**
+     * initializes images for debris walls/clear lines and loads these Sprites onto a PApplet
+     * @param marker the PApplet where the Sprites will be drawn
+     */
     public void setup(PApplet marker)
     {
         wallChunk = marker.loadImage("images"+DrawingSurface.fileSeparator+"wallchunk.png");
@@ -32,6 +38,10 @@ public class Map
         makeSprites(marker);
     }
 
+    /**
+     * Scrolls the entire map downward by the specified number of pixels per frame
+     * @param scrollSpeed the speed, in pixels per frame, that the map will scroll down by
+     */
     public void scroll(int scrollSpeed)
     {
         for(int i=0; i<grid.length; i++)
@@ -43,6 +53,11 @@ public class Map
         }
     }
 
+    /**
+     * Initializes a 2D character array with information representing the level map from a text file
+     * @param filename the name and file path of the .txt file containing the map data
+     * @pre filename must use a valid file path with the correct file Separators and should refer to a .txt file
+     */
 	public Map(String filename) 
     {
 		y=0;
@@ -53,6 +68,10 @@ public class Map
 		readData(filename, grid);
 	}
 	
+	/**
+	 * Adds Sprites representing the walls and clear lines of the map to a List with their position and image data
+	 * @param marker the marker upon which these Sprites will be drawn
+	 */
     public void makeSprites(PApplet marker)
     {
         int width =  marker.width/(grid[0].length);
@@ -81,16 +100,28 @@ public class Map
             }
         }
     }
-
+    
+    /**
+     * Returns a List of all Sprites comprising the map
+     * @return a List of all Sprites that comprise the map
+     */
     public List<List<Sprite>> getWallRects()
     {
         return wall;
     }
     
+    /**
+     * Returns a 2D character array read from a text file that represents the Game map
+     * @return a 2d character array read from a text file that represents the Game map
+     */
     public char[][] getGrid() {
     	return grid;
     }
 
+    /**
+     * Draws the map onto a PApplet
+     * @param marker the PApplet upon which the map will be drawn
+     */
     public void draw(PApplet marker)
     {
         marker.fill(255);
@@ -106,6 +137,11 @@ public class Map
 
     }
 
+    /**
+     * Reads data from a text file and converts that information to a 2D character array that will represent the map
+     * @param filename the text file that holds the map information
+     * @param gameData the 2D character array that will be filled with map information from the text file
+     */
 	public void readData (String filename, char[][] gameData) 
 	{
 		File dataFile = new File(filename);
@@ -140,6 +176,10 @@ public class Map
 		}
 	}
 	
+	/**
+	 * Correctly sets the dimensions of the 2D character array that will represent the level's map
+	 * @param file the file that will be read to determine its dimensions and give the 2D array the correct dimensions
+	 */
 	public void setDimensions(String file) {
 		try {
 			mapLength = (int)Files.lines(Paths.get(file)).count();
