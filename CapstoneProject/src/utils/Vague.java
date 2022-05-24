@@ -19,6 +19,7 @@ public class Vague
     public static final int AMMO_CRATE = 3;
 	public static final int HEALTH_PACKAGE = 4;
 	public static final int BLACK_HOLE = 5;
+	public static final int CLEAR_LINE = 0;
 
     public static boolean IN_BLACK_HOLE = false;
 

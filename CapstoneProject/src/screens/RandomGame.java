@@ -18,7 +18,7 @@ public class RandomGame extends Screen {
 
 	private DrawingSurface surface;
 	private StarShip ship;
-	private Map map;
+	private RandomMap map;
 	private int scrollSpeed;
 	public final static String fileSeparator = System.getProperty("file.separator");
 
@@ -26,7 +26,7 @@ public class RandomGame extends Screen {
 		super(surface.width, surface.height);
 		this.surface = surface;
 		ship = new StarShip(surface, surface.width/2-20);
-		map = new Map(surface);
+		map = new RandomMap(surface);
 		scrollSpeed = speed;
 	}
 

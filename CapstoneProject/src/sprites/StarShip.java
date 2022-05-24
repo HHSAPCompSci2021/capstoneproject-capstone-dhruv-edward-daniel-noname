@@ -4,6 +4,7 @@ import java.util.List;
 import core.DrawingSurface;
 import processing.core.PApplet;
 import processing.core.PImage;
+import screens.ScreenSwitcher;
 import utils.UserData;
 import utils.Vague;
 
@@ -20,12 +21,12 @@ public class StarShip extends Sprite {
 	private ArrayList<Bullet> bullets = new ArrayList<>();
 	private Sprite fires;
 	private int ammo = 23;
-	private PApplet surface;
+	private DrawingSurface surface;
 	private int health, ticks = 1000;
 	public final static String fileSeparator = System.getProperty("file.separator");
 
 
-	public StarShip(PApplet surface, int x) 
+	public StarShip(DrawingSurface surface, int x) 
 	{
 		super(Vague.starShip, x, 700, SHIP_WIDTH, SHIP_HEIGHT*2);
 		this.surface =  surface;
@@ -124,7 +125,8 @@ public class StarShip extends Sprite {
 							case(Vague.BLACK_HOLE):
 								Vague.IN_BLACK_HOLE = true;
 								break;
-
+							case(Vague.CLEAR_LINE):
+								surface.switchScreen(ScreenSwitcher.MENU_SCREEN);
 
 						}
 
